@@ -7,9 +7,9 @@ import java.awt.Rectangle;
 public class Mathf {
 	
 	public static float clamp(float min, float max, float value) {
-		if (value > max) return max;
-		if (value < min) return min;
-		return value;
+		if (value > max)
+			return max;
+		return Math.max(value, min);
 	}
 	
 	public static float lerp(float a, float b, float t) {

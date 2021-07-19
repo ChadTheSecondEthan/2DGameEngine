@@ -2,19 +2,29 @@ package Main;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 import GameState.GameState;
 import Utils.Input;
 
 public class Game implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+
+	private static Game instance;
 	
 	// window, loop, input variables
 	private JFrame window;
 	private GameLoop gameLoop;
 	private Input input;
+
+	// the starting size of the window
+	private Dimension startSize;
+
+	// has the game been started?
+	private boolean started;
 	
 	public Game(String name) {
+		instance = this;
 		
 		// create a new window
 		window = new JFrame(name);
@@ -23,6 +33,7 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		window.setSize(screenSize.width - 50, screenSize.height - 50);
+		startSize = window.getSize();
 		
 		// center the window
 		window.setLocationRelativeTo(null);
@@ -32,16 +43,23 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 		window.addMouseListener(this);
 		window.addMouseWheelListener(this);
 		window.addMouseMotionListener(this);
+		window.setBackground(Color.white);
 		
 		// create an input variable
 		input = new Input();
 		
 		// create the game loop
 		gameLoop = new GameLoop(this);
+
+		started = false;
 	}
+
+	public void setStates(GameState[] states) { gameLoop.setStates(states); }
 	
 	/** Starts the game with the game state given */
-	public void start(GameState startState) {
+	public void start(String startState) {
+
+		started = true;
 		
 		// show the window
 		window.setVisible(true);
@@ -49,6 +67,38 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 		// start the game loop
 		gameLoop.setState(startState);
 		gameLoop.start(window.getGraphics());
+	}
+
+	/** Starts the game with the game state given */
+	public void start(int startState) {
+
+		started = true;
+
+		// show the window
+		window.setVisible(true);
+
+		// start the game loop
+		gameLoop.setState(startState);
+		gameLoop.start(window.getGraphics());
+	}
+
+	/** the starting size of the window */
+	public Dimension getStartSize() { return startSize; }
+
+	/**
+	 * returns a percent of the height of the start size of the window
+	 * @param percent a value between 0 and 1
+	 */
+	public float percentHeight(float percent) {
+		return startSize.height * percent;
+	}
+
+	/**
+	 * returns a percent of the width of the start size of the window
+	 * @param percent a value between 0 and 1
+	 */
+	public float percentWidth(float percent) {
+		return startSize.width * percent;
 	}
 	
 	/** returns the game window */
@@ -70,6 +120,10 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 	public Input getInput() {
 		return input;
 	}
+
+	public boolean isStarted() { return started; }
+
+	public static Game instance() { return instance; }
 	
 	/* 
 	 * Key and Mouse methods. For each one, I just send the info 
@@ -88,7 +142,7 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		input.onMouseScroll(e.getScrollAmount());
+		input.onMouseScroll(e.getScrollAmount() * e.getWheelRotation());
 	}
 
 	@Override

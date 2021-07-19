@@ -29,7 +29,12 @@ public class Resources {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return whitePixel();
     }
 
+    private static BufferedImage whitePixel() {
+        BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
+        image.setRGB(0, 0, 255);
+        return image;
+    }
 }

@@ -6,7 +6,11 @@ import java.awt.Graphics;
 
 import GameState.GameState;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Text extends UIElement {
+
+	public static Font defaultFont = new Font("Arial", Font.PLAIN, 12);
+	public static Color defaultColor = Color.black;
 	
 	public enum TextAlign { LEFT, CENTER, RIGHT }
 	
@@ -15,15 +19,18 @@ public class Text extends UIElement {
 	protected Color color;
 	protected TextAlign alignment;
 
-	public Text(GameState gameState, String text) {
-		super(gameState);
+	public Text() { this(""); }
+
+	public Text(String text) {
+		super();
 		this.text = text;
 		
-		font = new Font("Arial", Font.PLAIN, 12);
-		color = Color.black;
+		font = defaultFont;
+		color = defaultColor;
 		alignment = TextAlign.CENTER;
 	}
 
+	@Override
 	public void draw(Graphics g) {
 		
 		// set the font and color of the graphics
@@ -31,18 +38,14 @@ public class Text extends UIElement {
 		g.setColor(color);
 		
 		// align the text based on the text alignment
-		int drawX = (int) x;
+		int drawX = (int) getX();
 		if (alignment != TextAlign.LEFT) {
 			int width = g.getFontMetrics().stringWidth(text);
-			
-			if (alignment == TextAlign.RIGHT)
-				drawX -= width;
-			else 
-				drawX -= width / 2;
+			drawX -= alignment == TextAlign.RIGHT ? width : (width / 2);
 		}
 		
 		// draw the string
-		g.drawString(text, drawX, (int) y);
+		g.drawString(text, drawX, (int) getY());
 	}
 	
 	/**
@@ -59,9 +62,7 @@ public class Text extends UIElement {
 		return text;
 	}
 
-	public void setText(String text) {
-		this.text = text;
-	}
+	public void setText(String text) { this.text = text; }
 
 	public Font getFont() {
 		return font;

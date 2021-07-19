@@ -3,13 +3,11 @@ package Utils;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Stats {
 	
-	private static ArrayList<Stats> allStats = new ArrayList<>();
+	private static HashMap<String, Stats> allStats = new HashMap<>();
 	private static String defaultPath = "res/stats/";
 	
 	private StatsMap stats;
@@ -19,9 +17,15 @@ public class Stats {
 	 * the default path, which is normally set to "res/stats/"
 	 * @param fileName the name of the file <strong>without the extension</strong>
 	 */
-	public Stats(String fileName) {
+	private Stats(String fileName) {
 		stats = new StatsMap(defaultPath + fileName + ".txt");
-		allStats.add(this);
+		allStats.put(fileName, this);
+	}
+
+	public static Stats find(String fileName) {
+		if (allStats.containsKey(fileName))
+			return allStats.get(fileName);
+		return new Stats(fileName);
 	}
 	
 	public void write(String key, int value) {
@@ -120,8 +124,8 @@ public class Stats {
 	public void reset() { stats.reset(); }
 	
 	public static void saveAll() {
-		for (Stats stats : allStats)
-			stats.save();
+		for (String s : allStats.keySet())
+			allStats.get(s).save();
 	}
 
 	public static void setDefaultStatsPath(String path) {

@@ -41,7 +41,7 @@ public class Animation implements Drawable{
 
     /** draws the current image onto the graphics */
     public void draw(Entity e, Graphics g) {
-        g.drawImage(sprites[currentFrame], (int) e.x, (int) e.y, (int) e.width, (int) e.height, null);
+        g.drawImage(sprites[currentFrame], (int) e.getX(), (int) e.getY(), (int) e.width, (int) e.height, null);
     }
 
     /** set the current sprites and resets the current frame */

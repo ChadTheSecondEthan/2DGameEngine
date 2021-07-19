@@ -9,8 +9,8 @@ public abstract class Tween extends Entity {
 	protected Entity object;
 	protected float passed;
 
-	Tween(GameState gameState, Entity object) {
-		super(gameState);
+	Tween(Entity object) {
+		super();
 
 		this.object = object;
 		passed = 0;
@@ -21,8 +21,8 @@ public abstract class Tween extends Entity {
 	 * @param to the x value to go to
 	 * @param t the time to pass
 	 */
-	public static Move moveX(GameState gameState, Entity object, float to, float t) {
-		return new Move(gameState, object, to, t, true);
+	public static Move moveX(Entity object, float to, float t) {
+		return new Move(object, to, t, true);
 	}
 	
 	/**
@@ -30,8 +30,8 @@ public abstract class Tween extends Entity {
 	 * @param to the y value to go to
 	 * @param t the time to pass
 	 */
-	public static Move moveY(GameState gameState, Entity object, float to, float t) {
-		return new Move(gameState, object, to, t, false);
+	public static Move moveY(Entity object, float to, float t) {
+		return new Move(object, to, t, false);
 	}
 	
 	/**
@@ -41,8 +41,8 @@ public abstract class Tween extends Entity {
 	 * @param freq the frequency of the oscillation (times per second)
 	 * @param offset the offset of the oscillation (or the phase constant)
 	 */
-	public static Oscillate oscillateX(GameState gameState, Entity object, float amp, float freq, float offset) {
-		return new Oscillate(gameState, object, amp, freq, offset, true);
+	public static Oscillate oscillateX(Entity object, float amp, float freq, float offset) {
+		return new Oscillate(object, amp, freq, offset, true);
 	}
 	
 	/**
@@ -52,8 +52,8 @@ public abstract class Tween extends Entity {
 	 * @param freq the frequency of the oscillation (times per second)
 	 * @param offset the offset of the oscillation (or the phase constant)
 	 */
-	public static Oscillate oscillateY(GameState gameState, Entity object, float amp, float freq, float offset) {
-		return new Oscillate(gameState, object, amp, freq, offset, false);
+	public static Oscillate oscillateY(Entity object, float amp, float freq, float offset) {
+		return new Oscillate(object, amp, freq, offset, false);
 	}
 	
 	/**
@@ -63,8 +63,8 @@ public abstract class Tween extends Entity {
 	 * @param fallDist the amount to fall before the bounces
 	 * @param fallAccel basically gravity
 	 */
-	public static Bounce bounce(GameState gameState, Entity object, float fallDist, float fallAccel) {
-		return new Bounce(gameState, object, fallDist, fallAccel);
+	public static Bounce bounce(Entity object, float fallDist, float fallAccel) {
+		return new Bounce(object, fallDist, fallAccel);
 	}
 }
 
@@ -75,8 +75,8 @@ class Move extends Tween {
 	private float t;
 	private boolean x;
 	
-	Move(GameState gameState, Entity object, float to, float t, boolean x) {
-		super(gameState, object);
+	Move(Entity object, float to, float t, boolean x) {
+		super(object);
 		this.to = to;
 		this.t = t;
 		this.x = x;
@@ -110,8 +110,8 @@ class Oscillate extends Tween {
 	private float offset;
 	private boolean x;
 	
-	Oscillate(GameState gameState, Entity object, float amp, float freq, float offset, boolean x) {
-		super(gameState, object);
+	Oscillate(Entity object, float amp, float freq, float offset, boolean x) {
+		super(object);
 		this.amp = amp;
 		start = x ? object.getX() : object.getY();
 		this.freq = freq;

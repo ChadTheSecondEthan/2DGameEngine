@@ -3,8 +3,6 @@ package UI;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import GameState.GameState;
-
 public class ProgressBar extends UIElement {
 	
 	private float progress;
@@ -13,8 +11,8 @@ public class ProgressBar extends UIElement {
 	private Color fillColor;
 	private Color backgroundColor;
 
-	public ProgressBar(GameState gameState) {
-		super(gameState);
+	public ProgressBar() {
+		super();
 		height = 20;
 		
 		progress = 0;
@@ -27,13 +25,23 @@ public class ProgressBar extends UIElement {
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(backgroundColor);
-		g.fillRect((int) x, (int) y, (int)width, (int)height);
+		g.fillRect((int) getX(), (int) getY(), (int)width, (int)height);
 		g.setColor(fillColor);
 		
 		int drawWidth = (int) ((width - fillWidth * 2) * progress);
 		if (drawWidth < minDrawWidth)
 			drawWidth = minDrawWidth;
-		g.fillRect((int) x + fillWidth, (int) y + fillWidth, drawWidth, ((int)height - fillWidth * 2));
+		g.fillRect((int) getX() + fillWidth, (int) getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
+	}
+
+	@Override
+	public boolean setAttribute(String attr, String value) {
+		if (attr.toLowerCase().equals("progress")) {
+			setProgress(Float.parseFloat(value));
+			return true;
+		}
+
+		return super.setAttribute(attr, value);
 	}
 
 	public double getProgress() {

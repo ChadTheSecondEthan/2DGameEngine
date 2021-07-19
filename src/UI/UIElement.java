@@ -1,76 +1,47 @@
 package UI;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-
-import Entity.Action;
-import Entity.Entity;
-import GameState.GameState;
+import Entity.*;
+import Main.Game;
 import Utils.Input;
 import Utils.Mathf;
 
-public abstract class UIElement extends Entity {
+public class UIElement extends Entity {
+
+	public static final byte ON_MOUSE_ENTER = 20;
+	public static final byte ON_MOUSE_EXIT = 21;
+	public static final byte ON_MOUSE_CLICK = 22;
 
 	// visibility and whether or not the mouse has entered
-	private boolean visible;
 	private boolean mouseEntered;
 
-	public UIElement(GameState gameState) {
-		super(gameState);
+	public UIElement() {
+		super();
 
-		visible = true;
 		mouseEntered = false;
 	}
 
-	/** sets the x, y, width, and height of the element */
-	public final void setBounds(int x, int y, int width, int height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		setPositionRelativeToAnchor();
-	}
+	public void centerX() {
+	    setX((Game.instance().getWindowSize().width - width) * 0.5f);
+    }
 
-	/** sets the position of the element at x, y + the anchor point */
-	public final void setPosition(int x, int y) {
-		this.x = x;
-		this.y = y;
-		setPositionRelativeToAnchor();
-	}
-	
-	/** sets the position without using the anchor point */
-	public final void setPositionAbsolute(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-	
-	/** sets the position of the element relative to its anchor point */
-	private void setPositionRelativeToAnchor() {
-//		Point anchorPos = anchor.toPoint();
-//		x += anchorPos.x;
-//		y += anchorPos.y;
-	}
+    public void centerY() {
+        setY((Game.instance().getWindowSize().height - height) * 0.5f);
+    }
 
-	/** sets the x coordinate of the element relative to its anchor point */
-	private void setXRelativeToAnchor() {
-//		Point anchorPos = anchor.toPoint();
-//		x += anchorPos.x;
-	}
+    public static float centerX(float width) {
+	    return (Game.instance().getWindowSize().width - width) * 0.5f;
+    }
 
-	/** sets the y coordinate of the element relative to its anchor point */
-	private void setYRelativeToAnchor() {
-//		Point anchorPos = anchor.toPoint();
-//		y += anchorPos.y;
-	}
+    public static float centerY(float height) {
+        return (Game.instance().getWindowSize().height - height) * 0.5f;
+    }
 	
 	@Override
 	public void update(float dt) {
 		
 		// do nothing if it's invisible
-		if (!visible) {
-			mouseEntered = false;
+		if (!visible)
 			return;
-		}
 			
 		// check if the mouse moved
 		if (Input.mouseMoved()) {
@@ -80,62 +51,32 @@ public abstract class UIElement extends Entity {
 			
 			// if the current position is within the element but isn't set in the
 			// mouse listener, set it
-			if (!mouseEntered && inRect) {
-				mouseEntered = true;
-				for (Action a : listeners)
-					if (a instanceof Action.OnMouseEnterListener)
-						a.onAction();
-			}
+			if (!mouseEntered && inRect)
+				invokeListeners(ON_MOUSE_ENTER);
 			
 			// if the current position is outside the element but is currently set,
 			// reset it
-			else if (mouseEntered && !inRect) {
-				mouseEntered = false;
-				for (Action a : listeners)
-					if (a instanceof Action.OnMouseExitListener)
-						a.onAction();
-			}
-			
+			else if (mouseEntered && !inRect)
+				invokeListeners(ON_MOUSE_EXIT);
+
+			mouseEntered = inRect;
 		}
 		
 		// check if the on click listener should be used
 		if (mouseEntered && Input.mouseClicked())
-			for (Action a : listeners)
-				if (a instanceof Action.OnMouseClickListener)
-					a.onAction();
-	}
-
-	/** is the element visible? */
-	public final boolean isVisible() {
-		return visible;
+			invokeListeners(ON_MOUSE_CLICK);
 	}
 	
 	/** is the mouse within the bounds of the element? */
-	public final boolean isMouseEntered() {
+	public final boolean mouseWithinBounds() {
 		return mouseEntered;
-	}
-	
-	/** returns the bounds of the element */
-	public final Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, (int)width, (int)height);
-	}
-	
-	/** sets the x value to the x passed + the anchor point's x value */
-	public void setX(float x) {
-		this.x = x;
-		setXRelativeToAnchor();
-	}
-
-	/** sets the y value to the y passed + the anchor point's y value */
-	public void setY(float y) {
-		this.y = y;
-		setYRelativeToAnchor();
 	}
 
 	/** sets the visibility of the element */
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-		if (!visible)
-			mouseEntered = false;
-	}
+	@Override
+	public void setVisible(boolean visible) { mouseEntered = (this.visible = visible) && mouseEntered; }
+
+	public Listener addMouseHoverListener(Action action) { return addListener(ON_MOUSE_ENTER, action); }
+	public Listener addMouseExitListener(Action action) { return addListener(ON_MOUSE_EXIT, action); }
+	public Listener addOnClickListener(Action action) { return addListener(ON_MOUSE_CLICK, action); }
 }

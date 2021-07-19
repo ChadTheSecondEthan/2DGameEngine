@@ -2,6 +2,8 @@ package Main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import GameState.GameState;
 import GameState.ExampleState;
@@ -21,11 +23,14 @@ public class GameLoop implements Runnable {
 	// the total time and the time in the current state
 	private Time totalTime;
 	private Time stateTime;
+	private float dt;
 	
-	// game state, game, and input variables
-	private GameState currentState;
+	// game and input variables
 	private Game game;
 	private Input input;
+
+	// list of game states
+	private GameState[] states;
 	
 	// should the loop be running?
 	private boolean shouldRun;
@@ -51,10 +56,6 @@ public class GameLoop implements Runnable {
 		frameImage = new BufferedImage(game.getWindowSize().width, game.getWindowSize().height, BufferedImage.TYPE_INT_RGB);
 		frameGraphics = frameImage.getGraphics();
 		
-		// if the state is null, create a null state
-		if (currentState == null)
-			currentState = new ExampleState(this);
-		
 		// create the thread for the game loop
 		new Thread(this).start();
 	}
@@ -69,11 +70,12 @@ public class GameLoop implements Runnable {
 		Time frameTime = new Time();
 		totalTime = new Time();
 		stateTime.reset();
-		
+
 		while (shouldRun) {
 			
 			// update and reset timer
-			currentState.update(updateTime.getElapsed());
+			dt = updateTime.getElapsed();
+            GameState.current().update(dt);
 			updateTime.reset();
 			
 			// update all inputs
@@ -81,7 +83,7 @@ public class GameLoop implements Runnable {
 			
 			// draw with the window graphics
 			game.getWindow().paint(frameGraphics);
-			currentState.draw(frameGraphics);
+            GameState.current().draw(frameGraphics);
 			
 			windowGraphics.drawImage(frameImage, 0, 0, game.getWindowSize().width, game.getWindowSize().height, null);
 			
@@ -105,6 +107,8 @@ public class GameLoop implements Runnable {
 		}
 		
 	}
+
+	public float deltaTime() { return dt; }
 	
 	/** get the amount of time since the loop started */
 	public float totalTime() { return totalTime.getElapsed(); }
@@ -116,6 +120,29 @@ public class GameLoop implements Runnable {
 	public void stop() { shouldRun = false; }
 	
 	/** set the current state */
-	public void setState(GameState newState) { currentState = newState; stateTime.reset(); }
+	public void setState(String stateName) {
+		if (GameState.current() != null)
+            GameState.current().invokeListeners(GameState.ON_STATE_CHANGE);
+
+		for (GameState state : states)
+			if (state.getClass().getSimpleName().equals(stateName)) {
+				GameState.setCurrent(state);
+				state.init();
+				return;
+			}
+
+		stateTime.reset();
+	}
+
+	public void setState(int index) {
+		if (GameState.current() != null)
+			GameState.current().invokeListeners(GameState.ON_STATE_CHANGE);
+		GameState.setCurrent(states[index]);
+		GameState.current().init();
+		stateTime.reset();
+	}
+
+	public void setStates(GameState[] states) { this.states = states; }
+	public BufferedImage getFrameImage() { return frameImage; }
 
 }

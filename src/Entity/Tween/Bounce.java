@@ -13,8 +13,8 @@ public class Bounce extends Tween {
 	private byte bounces;
 	private byte maxBounces;
 	
-	Bounce(GameState gameState, Entity object, float fallDist, float fallAccel) {
-		super(gameState, object);
+	Bounce(Entity object, float fallDist, float fallAccel) {
+		super(object);
 		this.groundHeight = object.getY() + fallDist;
 		this.fallDist = fallDist;
 		this.fallAccel = fallAccel;

@@ -14,12 +14,17 @@ public class SpriteRenderer implements Drawable {
     }
 
     public SpriteRenderer(String imgPath) {
-        image = Resources.loadImage(imgPath);
+        if (imgPath != null)
+            image = Resources.loadImage(imgPath);
     }
 
+    public SpriteRenderer() {}
+
     public void draw(Entity e, Graphics g) {
-        g.drawImage(image, (int) e.x, (int) e.y, (int) e.width, (int) e.height, null);
+        g.drawImage(image, (int) e.getX(), (int) e.getY(), (int) e.width, (int) e.height, null);
     }
 
     public BufferedImage getImage() { return image; }
+    public void setImage(BufferedImage image) { this.image = image; }
+    public void setImage(String imgPath) { image = Resources.loadImage(imgPath); }
 }

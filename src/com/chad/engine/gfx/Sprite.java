@@ -1,6 +1,6 @@
 package com.chad.engine.gfx;
 
-import com.jdh.microcraft.Main;
+import com.chad.engine.Game;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -17,7 +17,7 @@ public class Sprite {
         BufferedImage image;
 
         try {
-            image = ImageIO.read(Main.class.getResourceAsStream(path));
+            image = ImageIO.read(Game.class.getResourceAsStream(path));
         } catch (IOException e) {
             throw new Error(e);
         }

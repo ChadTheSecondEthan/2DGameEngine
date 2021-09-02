@@ -147,6 +147,11 @@ public class Keyboard {
     // ideally would not be a magic number, but some keys (i.e. VK_PLUS) are above KEY_LAST
     public static final Key[] keys = new Key[1024];
 
+    public static final Control UP = new Control(KEY_UP, KEY_W);
+    public static final Control DOWN = new Control(KEY_DOWN, KEY_S);
+    public static final Control LEFT = new Control(KEY_LEFT, KEY_A);
+    public static final Control RIGHT = new Control(KEY_RIGHT, KEY_D);
+
     static {
         for (int i = 0; i < keys.length; i++)
             keys[i] = new Key();

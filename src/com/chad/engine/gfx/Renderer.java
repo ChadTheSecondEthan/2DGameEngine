@@ -38,34 +38,22 @@ public class Renderer {
         return result;
     }
 
-    public static void reset() {
-        Renderer.clear();
-        Renderer.clearLights();
-    }
-
-    public static boolean inBounds(int x, int y) {
-        int xt = x - Renderer.camera.tx, yt = y - Renderer.camera.ty;
-        return xt >= 0 && yt >= 0 && xt < Renderer.WIDTH && yt < Renderer.HEIGHT;
-    }
-
     public static void clear() {
         Arrays.fill(Renderer.pixels, 0);
     }
 
     public static void fill(int x, int y, int w, int h, int color) {
-        int xt = x - Renderer.camera.tx, yt = y - Renderer.camera.ty;
-
         // check if entirely offscreen
-        if (xt + w < 0 || yt + h < 0) {
+        if (x + w < 0 || y + h < 0) {
             return;
         }
 
-        for (int yy = yt; yy < yt + h && yy < Renderer.HEIGHT; yy++) {
+        for (int yy = y; yy < y + h && yy < Renderer.HEIGHT; yy++) {
             if (yy < 0) {
                 continue;
             }
 
-            for (int xx = xt; xx < xt + w && xx < Renderer.WIDTH; xx++) {
+            for (int xx = x; xx < x + w && xx < Renderer.WIDTH; xx++) {
                 if (xx < 0) {
                     continue;
                 }
@@ -76,18 +64,16 @@ public class Renderer {
     }
 
     public static void render(Sprite sprite, int x, int y, int color) {
-        int xt = x - Renderer.camera.tx, yt = y - Renderer.camera.ty;
-
-        if (xt + sprite.width < 0 || yt + sprite.height < 0) {
+        if (x + sprite.width < 0 || y + sprite.height < 0) {
             return;
         }
 
-        for (int yy = yt, ys = 0; yy < yt + sprite.height && yy < Renderer.HEIGHT; yy++, ys++) {
+        for (int yy = y, ys = 0; yy < y + sprite.height && yy < Renderer.HEIGHT; yy++, ys++) {
             if (yy < 0) {
                 continue;
             }
 
-            for (int xx = xt, xs = 0; xx < xt + sprite.width && xx < Renderer.WIDTH; xx++, xs++) {
+            for (int xx = x, xs = 0; xx < x + sprite.width && xx < Renderer.WIDTH; xx++, xs++) {
                 if (xx < 0) {
                     continue;
                 }
@@ -100,82 +86,43 @@ public class Renderer {
         }
     }
 
-    public static void render(int s, int x, int y, int color, int flags) {
-        Renderer.render(
-            s % Renderer.spritesheet.sizeSprites,
-            s / Renderer.spritesheet.sizeSprites,
-            x, y, color, flags
-        );
-    }
+//    public static void render(int s, int x, int y, int color, int flags) {
+//        Renderer.render(
+//            s % Renderer.spritesheet.sizeSprites,
+//            s / Renderer.spritesheet.sizeSprites,
+//            x, y, color, flags
+//        );
+//    }
 
-    public static void render(int sx, int sy, int x, int y, int color, int flags) {
-        int posX = x - camera.tx, posY = y - camera.ty,
-            minX = sx * Renderer.spritesheet.size, minY = sy * Renderer.spritesheet.size,
-            maxX = minX + Renderer.spritesheet.size, maxY = minY + Renderer.spritesheet.size;
-
-        // sprite will not be shown at all
-        if (posX + Renderer.spritesheet.size < 0 || posY + Renderer.spritesheet.size < 0) {
-            return;
-        }
-
-        for (int ys = minY, yr = posY; ys < maxY && yr < Renderer.HEIGHT; ys++, yr++) {
-            if (yr < 0) {
-                continue;
-            }
-
-            for (int xs = minX, xr = posX; xs < maxX && xr < Renderer.WIDTH; xs++, xr++) {
-                if (xr < 0) {
-                    continue;
-                }
-
-                int p = Renderer.spritesheet.pixels[
-                    ((flags & FLIP_Y) == 0 ? ys : (Renderer.spritesheet.size - (ys - minY) - 1 + minY))
-                        * Renderer.spritesheet.width +
-                        ((flags & FLIP_X) == 0 ? xs : (Renderer.spritesheet.size - (xs - minX) - 1 + minX))];
-
-                if (p >= 0) {
-                    Renderer.pixels[yr * Renderer.WIDTH + xr] = (color >> (p * 8)) & 0xFF;
-                }
-            }
-        }
-    }
-
-    // lights the current frame stored by the renderer
-    public static void light(int d) {
-        AABB aabb = Renderer.getAABB();
-
-        // compute (approx.) lights which affect this frame
-        com.jdh.microcraft.gfx.Light[] lights = Renderer.lights.stream()
-            .filter(l -> {
-                int p = l.power * 16;
-                return AABB.collide(
-                    aabb.minX, aabb.minY, aabb.maxX, aabb.maxY,
-                    l.x - p, l.y - p, l.x + p, l.y + p
-                );
-            }).toArray(com.jdh.microcraft.gfx.Light[]::new);
-
-        int[] oldPixels = Renderer.pixels.clone();
-        Arrays.fill(Renderer.pixels, 0);
-
-        int tx = Renderer.camera.tx, ty = Renderer.camera.ty;
-
-        for (int i = 0; i < (Renderer.WIDTH * Renderer.HEIGHT); i++) {
-            int x = i % Renderer.WIDTH, y = i / Renderer.WIDTH;
-
-            // compute contribution from each light
-            for (com.jdh.microcraft.gfx.Light l : lights) {
-                int dx = l.x - (x + tx),
-                    dy = l.y - (y + ty),
-                    dist = (int) FMath.norm(dx, dy);
-
-                if (dist < (l.power * 4) ||
-                    (dist / l.power) <= DITHER[(((Math.abs(dy) % 4) * 4) + (Math.abs(dx) % 4))]) {
-                    Renderer.pixels[i] = d != 0 ?
-                        Color.map(Color.add(Color.iToRGB(oldPixels[i]), d)) :
-                        oldPixels[i];
-                    break;
-                }
-            }
-        }
-    }
+//    public static void render(int sx, int sy, int x, int y, int color, int flags) {
+//        int posX = x - camera.tx, posY = y - camera.ty,
+//            minX = sx * Renderer.spritesheet.size, minY = sy * Renderer.spritesheet.size,
+//            maxX = minX + Renderer.spritesheet.size, maxY = minY + Renderer.spritesheet.size;
+//
+//        // sprite will not be shown at all
+//        if (posX + Renderer.spritesheet.size < 0 || posY + Renderer.spritesheet.size < 0) {
+//            return;
+//        }
+//
+//        for (int ys = minY, yr = posY; ys < maxY && yr < Renderer.HEIGHT; ys++, yr++) {
+//            if (yr < 0) {
+//                continue;
+//            }
+//
+//            for (int xs = minX, xr = posX; xs < maxX && xr < Renderer.WIDTH; xs++, xr++) {
+//                if (xr < 0) {
+//                    continue;
+//                }
+//
+//                int p = Renderer.spritesheet.pixels[
+//                    ((flags & FLIP_Y) == 0 ? ys : (Renderer.spritesheet.size - (ys - minY) - 1 + minY))
+//                        * Renderer.spritesheet.width +
+//                        ((flags & FLIP_X) == 0 ? xs : (Renderer.spritesheet.size - (xs - minX) - 1 + minX))];
+//
+//                if (p >= 0) {
+//                    Renderer.pixels[yr * Renderer.WIDTH + xr] = (color >> (p * 8)) & 0xFF;
+//                }
+//            }
+//        }
+//    }
 }

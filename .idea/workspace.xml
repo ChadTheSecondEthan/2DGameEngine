@@ -10,30 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Student.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/Global.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Font.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Light.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Spritesheet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/sound/Sound.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Keyboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Mask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Mask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gameState/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gameState/GameState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/main/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/main/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorChanger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2DGameEngine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2DGameEngine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Font.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Spritesheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ScrollView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/ScrollView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/UIElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/UIElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Mathf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Mathf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Mouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Keyboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

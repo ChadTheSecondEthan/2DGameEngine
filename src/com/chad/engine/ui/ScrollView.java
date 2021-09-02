@@ -2,8 +2,8 @@ package com.chad.engine.ui;
 
 import com.chad.engine.entity.*;
 import com.chad.engine.Game;
-import com.chad.engine.utils.Input;
 import com.chad.engine.utils.Mathf;
+import com.chad.engine.utils.Mouse;
 
 import java.awt.*;
 
@@ -67,7 +67,7 @@ public class ScrollView extends UIElement {
         super.update(dt);
 
         float oldProgress = progress;
-        progress = Mathf.clamp(minProgress, maxProgress, progress + Input.scrollAmount() * scrollSensitivity);
+        progress = Mathf.clamp(minProgress, maxProgress, progress + Mouse.scrollAmount() * scrollSensitivity);
 
         float dProgress = progress - oldProgress;
         for (Entity child : getChildrenList())

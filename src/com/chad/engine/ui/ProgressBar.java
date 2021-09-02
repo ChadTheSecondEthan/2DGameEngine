@@ -35,8 +35,8 @@ public class ProgressBar extends UIElement {
 	}
 
 	@Override
-	public boolean setAttribute(String attr, String value) {
-		if (attr.toLowerCase().equals("progress")) {
+	public boolean setAttribute(String attr, String value) throws Exception {
+		if (attr.equals("progress")) {
 			setProgress(Float.parseFloat(value));
 			return true;
 		}

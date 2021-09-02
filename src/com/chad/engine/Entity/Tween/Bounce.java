@@ -1,13 +1,12 @@
 package com.chad.engine.Entity.Tween;
 
-import Entity.Entity;
-import GameState.GameState;
+import com.chad.engine.Entity.Entity;
 
 public class Bounce extends Tween {
 
-	private float groundHeight;
-	private float fallDist;
-	private float fallAccel;
+	private final float groundHeight;
+	private final float fallDist;
+	private final float fallAccel;
 
 	private float vel;
 	private byte bounces;

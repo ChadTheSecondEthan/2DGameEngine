@@ -54,7 +54,7 @@ public class Game implements KeyListener, MouseListener, MouseMotionListener, Mo
 		started = false;
 	}
 
-	public void setStates(GameState[] states) { gameLoop.setStates(states); }
+	public void setStates(GameState... states) { gameLoop.setStates(states); }
 	
 	/** Starts the game with the game state given */
 	public void start(String startState) {

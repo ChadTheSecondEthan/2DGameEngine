@@ -7,40 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Action.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Animation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/ColorRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Drawable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Entity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Listener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Mask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/SpriteRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Tween/Bounce.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Entity/Tween/Tween.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/GameState/ExampleState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/GameState/GameState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Main/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Main/GameLoop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Main/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/Anchor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/Animation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/Button.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/ColorChanger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/Image.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/ImageHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/ProgressBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/ScrollView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/Text.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/UI/UIElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Functions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/GameFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Input.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Mathf.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Pair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/ReadableObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Resources.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Stats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com.chad.engine/Utils/Time.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Entity/Tween/Bounce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Entity/Tween/Bounce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/GameState/ExampleState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Main/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Main/GameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Main/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Main/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +34,20 @@
   </component>
   <component name="ProjectId" id="1sX0kMCyeZf6Y8D9zojAkZGIyHG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GalagaGame" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -98,6 +79,7 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.chad.engine.Main.Test" />
+      <module name="2DGameEngine" />
       <selectedOptions>
         <option name="environmentVariables" visible="false" />
       </selectedOptions>
@@ -122,6 +104,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -132,8 +115,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621003768303</updated>
+      <workItem from="1630585172356" duration="415000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

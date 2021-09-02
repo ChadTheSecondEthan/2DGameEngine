@@ -2,11 +2,8 @@ package com.chad.engine.Main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 import com.chad.engine.GameState.GameState;
-import com.chad.engine.GameState.ExampleState;
 import com.chad.engine.Utils.Input;
 import com.chad.engine.Utils.Time;
 

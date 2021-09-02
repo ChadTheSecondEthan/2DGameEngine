@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.chad.engine.GameState.GameState;
 import com.chad.engine.Utils.GameFile;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -155,12 +156,12 @@ public abstract class Entity {
 			if (node.getNodeType() != Node.ELEMENT_NODE)
 				continue;
 
-			Entity entity = (Entity) Class.forName(node.getNodeName()).newInstance();
+			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).newInstance();
 			entity.setParent(parent);
 			entity.spawn();
 
-			if (entity instanceof UI.Text)
-				((UI.Text) entity).setText(node.getTextContent());
+			if (entity instanceof com.chad.engine.UI.Text)
+				((com.chad.engine.UI.Text) entity).setText(node.getTextContent());
 
 			if (node.getChildNodes() != null)
 				createChildren(entity, node.getChildNodes());

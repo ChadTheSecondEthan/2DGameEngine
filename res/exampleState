@@ -1,4 +1,4 @@
 <GameState>
-    <UI.Button x="10" y="100" width="50" height="75" />
-    <UI.ProgressBar x="100" y="300" width="250" height="50" progress=".25" />
+    <ui.Button center-x="true" y="100" width="200" height="500" />
+    <ui.ProgressBar x="100" y="300" width="250" height="50" progress=".25" />
 </GameState>

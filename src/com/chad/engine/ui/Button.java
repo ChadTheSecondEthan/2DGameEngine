@@ -1,6 +1,6 @@
 package com.chad.engine.ui;
 
-import com.chad.engine.utils.Input;
+import com.chad.engine.utils.Mouse;
 
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class Button extends UIElement {
 
         if (drawable instanceof ColorChanger) {
             if (mouseWithinBounds())
-                ((ColorChanger) drawable).setColor(Input.mousePressed() ? Color.darkGray : Color.gray);
+                ((ColorChanger) drawable).setColor(Mouse.pressed() ? Color.darkGray : Color.gray);
             else
                 ((ColorChanger) drawable).setColor(Color.lightGray);
         }

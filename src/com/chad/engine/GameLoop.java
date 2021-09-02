@@ -1,10 +1,11 @@
-package com.chad.engine.main;
+package com.chad.engine;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.chad.engine.gameState.GameState;
-import com.chad.engine.utils.Input;
+import com.chad.engine.utils.Keyboard;
+import com.chad.engine.utils.Mouse;
 import com.chad.engine.utils.Time;
 
 public class GameLoop implements Runnable {
@@ -24,7 +25,6 @@ public class GameLoop implements Runnable {
 	
 	// game and input variables
 	private Game game;
-	private Input input;
 
 	// list of game states
 	private GameState[] states;
@@ -39,7 +39,6 @@ public class GameLoop implements Runnable {
 		
 		// initialize game and input variables
 		this.game = game;
-		this.input = game.getInput();
 
 		// initialize state time
 		stateTime = new Time();
@@ -76,7 +75,8 @@ public class GameLoop implements Runnable {
 			updateTime.reset();
 			
 			// update all inputs
-			input.update();
+			Keyboard.update();
+			Mouse.update();
 			
 			// draw with the window graphics
 			game.getWindow().paint(frameGraphics);

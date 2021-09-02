@@ -1,9 +1,9 @@
 package com.chad.engine.ui;
 
 import com.chad.engine.entity.*;
-import com.chad.engine.main.Game;
-import com.chad.engine.utils.Input;
+import com.chad.engine.Game;
 import com.chad.engine.utils.Mathf;
+import com.chad.engine.utils.Mouse;
 
 import java.awt.*;
 
@@ -17,7 +17,7 @@ public class UIElement extends Entity {
 	private boolean mouseEntered;
 
 	// anchor point for the element
-	private Point anchor;
+	private final Point anchor;
 
 	public UIElement() {
 		super();
@@ -36,6 +36,10 @@ public class UIElement extends Entity {
 		anchor.y = Game.instance.getWindowSize().height / 2;
 //        setY((Game.instance().getWindowSize().height - height) * 0.5f);
     }
+
+	public void setAnchor(float x, float y) { anchor.x = (int)x; anchor.y = (int)y; }
+	public void setAnchorX(float x) { anchor.x = (int)x; }
+	public void setAnchorY(float y) { anchor.y = (int)y; }
 	
 	@Override
 	public void update(float dt) {
@@ -45,10 +49,10 @@ public class UIElement extends Entity {
 			return;
 			
 		// check if the mouse moved
-		if (Input.mouseMoved()) {
+		if (Mouse.moved()) {
 				
 			// check if the mouse is within the ui element
-			boolean inRect = Mathf.pointWithinRect(Input.mousePos(), getBounds());
+			boolean inRect = Mathf.pointWithinRect(Mouse.position(), getBounds());
 			
 			// if the current position is within the element but isn't set in the
 			// mouse listener, set it
@@ -64,7 +68,7 @@ public class UIElement extends Entity {
 		}
 		
 		// check if the on click listener should be used
-		if (mouseEntered && Input.mouseClicked())
+		if (mouseEntered && Mouse.clicked())
 			invokeListeners(ON_MOUSE_CLICK);
 	}
 
@@ -73,7 +77,7 @@ public class UIElement extends Entity {
 	public void setVisible(boolean visible) { mouseEntered = (this.visible = visible) && mouseEntered; }
 
 	@Override
-	public boolean setAttribute(String attr, String value) {
+	public boolean setAttribute(String attr, String value) throws Exception {
 		switch (attr) {
 			case "center-x":
 				if (value.equals("true")) {
@@ -85,6 +89,28 @@ public class UIElement extends Entity {
 					centerY();
 					return true;
 				}
+			case "anchor-x":
+				anchor.x = Integer.parseInt(value);
+				return true;
+			case "anchor-y":
+				anchor.y = Integer.parseInt(value);
+				return true;
+			case "align":
+				switch (value) {
+					case "left":
+						anchor.x = 0;
+						return true;
+					case "right":
+						anchor.x = Game.instance.getWindowSize().width;
+						return true;
+					case "top":
+						anchor.y = 0;
+						return true;
+					case "bottom":
+						anchor.y = Game.instance.getWindowSize().height;
+						return true;
+				}
+				break;
 		}
 		return super.setAttribute(attr, value);
 	}

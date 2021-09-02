@@ -1,0 +1,128 @@
+package com.chad.engine.gfx;
+
+import java.util.*;
+
+public class Renderer {
+    public static final int[] DITHER = new int[]{0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5};
+
+    // renderer flags
+    public static final int FLIP_NONE = 0x00, FLIP_X = 0x01, FLIP_Y = 0x02, FLIP_XY = FLIP_X | FLIP_Y;
+
+    // target width/height
+    public static final int WIDTH = 256, HEIGHT = 144;
+
+    // screen pixels, each entry in [0..216) referring to palette entry
+    // palette is determined by Window
+    public static int[] pixels = new int[WIDTH * HEIGHT];
+
+    // generates color palette, 24-bpp RGB
+    public static int[] generatePalette() {
+        int[] result = new int[256];
+
+        int i = 0;
+        for (int r = 0; r < 6; r++) {
+            for (int g = 0; g < 6; g++) {
+                for (int b = 0; b < 6; b++) {
+                    int rr = (r * 255) / 5,
+                        gg = (g * 255) / 5,
+                        bb = (b * 255) / 5,
+                        m = (rr * 30 + gg * 59 + bb * 11) / 100;
+
+                    result[i++] = ((((rr + m) / 2) * 230 / 255 + 10) << 16) |
+                        ((((gg + m) / 2) * 230 / 255 + 10) << 8) |
+                        (((bb + m) / 2) * 230 / 255 + 10);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void clear() {
+        Arrays.fill(Renderer.pixels, 0);
+    }
+
+    public static void fill(int x, int y, int w, int h, int color) {
+        // check if entirely offscreen
+        if (x + w < 0 || y + h < 0) {
+            return;
+        }
+
+        for (int yy = y; yy < y + h && yy < Renderer.HEIGHT; yy++) {
+            if (yy < 0) {
+                continue;
+            }
+
+            for (int xx = x; xx < x + w && xx < Renderer.WIDTH; xx++) {
+                if (xx < 0) {
+                    continue;
+                }
+
+                Renderer.pixels[yy * Renderer.WIDTH + xx] = Color.map(color);
+            }
+        }
+    }
+
+    public static void render(Sprite sprite, int x, int y, int color) {
+        if (x + sprite.width < 0 || y + sprite.height < 0) {
+            return;
+        }
+
+        for (int yy = y, ys = 0; yy < y + sprite.height && yy < Renderer.HEIGHT; yy++, ys++) {
+            if (yy < 0) {
+                continue;
+            }
+
+            for (int xx = x, xs = 0; xx < x + sprite.width && xx < Renderer.WIDTH; xx++, xs++) {
+                if (xx < 0) {
+                    continue;
+                }
+
+                int p = sprite.pixels[ys * sprite.width + xs];
+                if (p >= 0) {
+                    Renderer.pixels[yy * Renderer.WIDTH + xx] = (color >> (p * 8)) & 0xFF;
+                }
+            }
+        }
+    }
+
+//    public static void render(int s, int x, int y, int color, int flags) {
+//        Renderer.render(
+//            s % Renderer.spritesheet.sizeSprites,
+//            s / Renderer.spritesheet.sizeSprites,
+//            x, y, color, flags
+//        );
+//    }
+
+//    public static void render(int sx, int sy, int x, int y, int color, int flags) {
+//        int posX = x - camera.tx, posY = y - camera.ty,
+//            minX = sx * Renderer.spritesheet.size, minY = sy * Renderer.spritesheet.size,
+//            maxX = minX + Renderer.spritesheet.size, maxY = minY + Renderer.spritesheet.size;
+//
+//        // sprite will not be shown at all
+//        if (posX + Renderer.spritesheet.size < 0 || posY + Renderer.spritesheet.size < 0) {
+//            return;
+//        }
+//
+//        for (int ys = minY, yr = posY; ys < maxY && yr < Renderer.HEIGHT; ys++, yr++) {
+//            if (yr < 0) {
+//                continue;
+//            }
+//
+//            for (int xs = minX, xr = posX; xs < maxX && xr < Renderer.WIDTH; xs++, xr++) {
+//                if (xr < 0) {
+//                    continue;
+//                }
+//
+//                int p = Renderer.spritesheet.pixels[
+//                    ((flags & FLIP_Y) == 0 ? ys : (Renderer.spritesheet.size - (ys - minY) - 1 + minY))
+//                        * Renderer.spritesheet.width +
+//                        ((flags & FLIP_X) == 0 ? xs : (Renderer.spritesheet.size - (xs - minX) - 1 + minX))];
+//
+//                if (p >= 0) {
+//                    Renderer.pixels[yr * Renderer.WIDTH + xr] = (color >> (p * 8)) & 0xFF;
+//                }
+//            }
+//        }
+//    }
+}

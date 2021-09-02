@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import com.chad.engine.entity.Drawable;
 import com.chad.engine.entity.Entity;
-import com.chad.engine.main.Game;
+import com.chad.engine.Game;
 import com.chad.engine.utils.Mathf;
 
 public class ColorChanger implements Drawable {

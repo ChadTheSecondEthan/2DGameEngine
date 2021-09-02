@@ -1,6 +1,6 @@
 package com.chad.engine.entity;
 
-import com.chad.engine.main.Game;
+import com.chad.engine.Game;
 
 import java.awt.image.BufferedImage;
 

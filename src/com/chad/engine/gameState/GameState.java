@@ -8,7 +8,7 @@ import java.util.Comparator;
 import com.chad.engine.entity.Entity;
 import com.chad.engine.entity.Listener;
 import com.chad.engine.entity.Action;
-import com.chad.engine.main.Game;
+import com.chad.engine.Game;
 import com.chad.engine.utils.GameFile;
 
 import org.w3c.dom.*;

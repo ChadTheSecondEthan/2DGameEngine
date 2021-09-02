@@ -107,7 +107,7 @@ public abstract class Entity {
 	 * @param attr the attribute being set (lowercase)
 	 * @param value the value to be set (lowercase)
 	 */
-	public boolean setAttribute(String attr, String value) {
+	public boolean setAttribute(String attr, String value) throws Exception {
 		switch(attr.toLowerCase()) {
 			case "x":
 				setX(Float.parseFloat(value));
@@ -173,9 +173,13 @@ public abstract class Entity {
 			NamedNodeMap map = node.getAttributes();
 
 			for (int i = 0; i < map.getLength(); i++)
-				if (!entity.setAttribute(map.item(i).getNodeName().toLowerCase(),
-						                 map.item(i).getNodeValue().toLowerCase()))
-					System.err.println("Invalid attribute: " + map.item(i).getNodeName());
+				try {
+					if (!entity.setAttribute(map.item(i).getNodeName().toLowerCase(),
+							map.item(i).getNodeValue().toLowerCase()))
+						System.err.println("Invalid attribute: " + map.item(i).getNodeName());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
 	}
 

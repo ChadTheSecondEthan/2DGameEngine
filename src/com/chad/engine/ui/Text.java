@@ -1,5 +1,7 @@
 package com.chad.engine.ui;
 
+import com.chad.engine.gfx.Renderer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -29,21 +31,21 @@ public class Text extends UIElement {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw() {
 		
 		// set the font and color of the graphics
-		g.setFont(font);
-		g.setColor(color);
+		Renderer.setFont(font);
+		Renderer.setColor(color);
 		
 		// align the text based on the text alignment
 		int drawX = (int) getX();
 		if (alignment != TextAlign.LEFT) {
-			int width = g.getFontMetrics().stringWidth(text);
+			int width = Renderer.getFontMetrics().stringWidth(text);
 			drawX -= alignment == TextAlign.RIGHT ? width : (width / 2);
 		}
 		
 		// draw the string
-		g.drawString(text, drawX, (int) getY());
+		Renderer.drawString(text, drawX, (int) getY());
 	}
 	
 	/**

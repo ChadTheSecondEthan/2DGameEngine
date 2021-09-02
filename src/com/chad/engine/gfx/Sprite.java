@@ -5,6 +5,7 @@ import com.chad.engine.Game;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Sprite {
     // sprite size in pixels
@@ -17,7 +18,7 @@ public class Sprite {
         BufferedImage image;
 
         try {
-            image = ImageIO.read(Game.class.getResourceAsStream(path));
+            image = ImageIO.read(Objects.requireNonNull(Game.class.getResourceAsStream(path)));
         } catch (IOException e) {
             throw new Error(e);
         }

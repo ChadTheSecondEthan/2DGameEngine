@@ -74,11 +74,6 @@ public class ScrollView extends UIElement {
             child.setRelativeY(child.getRelativeY() - dProgress);
     }
 
-    @Override
-    public void draw(Graphics g) {
-        super.draw(g);
-    }
-
     public void setScrollSensitivity(float s) { scrollSensitivity = s; }
     public float getScrollSensitivity() { return scrollSensitivity; }
 

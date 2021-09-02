@@ -1,5 +1,7 @@
 package com.chad.engine.ui;
 
+import com.chad.engine.gfx.Renderer;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -23,15 +25,15 @@ public class ProgressBar extends UIElement {
 	}
 
 	@Override
-	public void draw(Graphics g) {
-		g.setColor(backgroundColor);
-		g.fillRect((int) getX(), (int) getY(), (int)width, (int)height);
-		g.setColor(fillColor);
+	public void draw() {
+		Renderer.setColor(backgroundColor);
+		Renderer.fill(getX(), getY(), width, height);
+		Renderer.setColor(fillColor);
 		
 		int drawWidth = (int) ((width - fillWidth * 2) * progress);
 		if (drawWidth < minDrawWidth)
 			drawWidth = minDrawWidth;
-		g.fillRect((int) getX() + fillWidth, (int) getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
+		Renderer.fill((int) getX() + fillWidth, (int) getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
 	}
 
 	@Override

@@ -80,13 +80,13 @@ public abstract class GameState {
 	public abstract void init();
 	
 	// draw the game objects with the given graphics
-	public void draw(Graphics g) {
+	public void draw() {
 
 		// create a copy of the list in case an entity is removed this frame
 		ArrayList<Entity> entityCopy = new ArrayList<>(entities);
 		for (Entity e : entityCopy)
 			if (e.isVisible())
-				e.draw(g);
+				e.draw();
 	}
 	
 	/** returns the entities */

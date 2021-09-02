@@ -13,7 +13,7 @@ public class Button extends UIElement {
         super();
 
         if (useDefaultDrawable)
-            drawable = new ColorChanger(this, Color.lightGray);
+            drawable = new ColorChanger(Color.lightGray);
     }
 
     @Override

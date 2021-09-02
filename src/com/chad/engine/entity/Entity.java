@@ -85,7 +85,7 @@ public abstract class Entity {
 	public abstract void update(float dt);
 	
 	/** draws the entity onto the graphics */
-	public void draw(Graphics g) { drawable.draw(this, g); }
+	public void draw() { drawable.draw(this); }
 
 	/** returns the bounds of the element */
 	public final Rectangle getBounds() {

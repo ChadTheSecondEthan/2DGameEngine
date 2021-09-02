@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.chad.engine.gameState.GameState;
+import com.chad.engine.gfx.Renderer;
 import com.chad.engine.utils.Keyboard;
 import com.chad.engine.utils.Mouse;
 import com.chad.engine.utils.Time;
@@ -51,6 +52,7 @@ public class GameLoop implements Runnable {
 		this.windowGraphics = windowGraphics;
 		frameImage = new BufferedImage(game.getWindowSize().width, game.getWindowSize().height, BufferedImage.TYPE_INT_RGB);
 		frameGraphics = frameImage.getGraphics();
+		Renderer.setGraphics(frameGraphics);
 		
 		// create the thread for the game loop
 		new Thread(this).start();

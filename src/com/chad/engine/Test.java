@@ -1,4 +1,4 @@
-package com.chad.engine.main;
+package com.chad.engine;
 
 import com.chad.engine.gameState.GameState;
 

@@ -1,7 +1,7 @@
 package com.chad.engine.ui;
 
 import com.chad.engine.entity.*;
-import com.chad.engine.main.Game;
+import com.chad.engine.Game;
 import com.chad.engine.utils.Input;
 import com.chad.engine.utils.Mathf;
 

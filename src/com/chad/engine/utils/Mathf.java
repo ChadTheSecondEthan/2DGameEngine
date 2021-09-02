@@ -11,6 +11,12 @@ public class Mathf {
 			return max;
 		return Math.max(value, min);
 	}
+
+	public static int clamp(int min, int max, int value) {
+		if (value > max)
+			return max;
+		return Math.max(value, min);
+	}
 	
 	public static float lerp(float a, float b, float t) {
 		return a + (b - a) * t;

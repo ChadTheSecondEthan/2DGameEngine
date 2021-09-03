@@ -1,44 +1,20 @@
 package com.chad.engine;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 import com.chad.engine.gameState.GameState;
-import com.chad.engine.gfx.Renderer;
 import com.chad.engine.utils.Keyboard;
 import com.chad.engine.utils.Mouse;
 import com.chad.engine.utils.Time;
 
-public class GameLoop implements Runnable {
-	
-	// target framerate for the loop
-	private int targetFramerate;
+import static com.chad.engine.Global.stateTime;
+import static com.chad.engine.Global.totalTime;
 
-	// the total time and the time in the current state
-	private Time totalTime;
-	private Time stateTime;
-	private float dt;
-	
-	// game and input variables
-	private Game game;
+public class GameLoop implements Runnable {
 
 	// list of game states
 	private GameState[] states;
 	
 	// should the loop be running?
 	private boolean shouldRun;
-
-	GameLoop(Game game) {
-		
-		// default framerate is 60
-		targetFramerate = 60;
-		
-		// initialize game and input variables
-		this.game = game;
-
-		// initialize state time
-		stateTime = new Time();
-	}
 	
 	/** starts the game loop */
 	void start() {
@@ -60,8 +36,8 @@ public class GameLoop implements Runnable {
 		while (shouldRun) {
 			
 			// update and reset timer
-			dt = updateTime.getElapsed();
-            GameState.current().update(dt);
+			Global.dt = updateTime.getElapsed();
+            GameState.current().update(Global.dt);
 			updateTime.reset();
 			
 			// update all inputs
@@ -70,18 +46,16 @@ public class GameLoop implements Runnable {
 			
 			// draw with the window graphics
             GameState.current().draw();
+            Window.draw();
 			
 			// get remaining amount of time
-			long targetNanos = 1000000000 / targetFramerate;
+			long targetNanos = 1000000000 / Global.fps;
 			long elapsedNanos = (long) (frameTime.getElapsed() * 1000000000);
 			long sleepMillis = (targetNanos - elapsedNanos) / 1000000;
 			
-			// make sure no negative times are slept
-			if (sleepMillis < 0) sleepMillis = 0;
-			
 			// sleep for that amount of time
 			try {
-				Thread.sleep(sleepMillis);
+				Thread.sleep(sleepMillis < 0 ? 0 : sleepMillis);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -89,17 +63,8 @@ public class GameLoop implements Runnable {
 			// reset frame timer
 			frameTime.reset();
 		}
-		
 	}
 
-	public float deltaTime() { return dt; }
-	
-	/** get the amount of time since the loop started */
-	public float totalTime() { return totalTime.getElapsed(); }
-
-	/** get the amount of time the game has been in the current state */
-	public float stateTime() { return stateTime.getElapsed(); }
-	
 	/** stops the game loop */
 	public void stop() { shouldRun = false; }
 	

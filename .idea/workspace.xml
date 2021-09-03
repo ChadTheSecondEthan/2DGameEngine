@@ -5,16 +5,40 @@
       <artifact name="2DGameEngine:jar" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2DGameEngine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2DGameEngine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Animation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Animation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/ColorRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/ColorRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Drawable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Drawable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/SpriteRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/SpriteRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/GameLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/GameLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ColorChanger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ColorChanger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ProgressBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ScrollView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ScrollView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text$TextAlign.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text$TextAlign.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gameState/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gameState/GameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Renderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Sprite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Sprite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Drawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gameState/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gameState/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/ColorRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/ColorRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorChanger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +81,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -101,7 +125,9 @@
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.chad.engine.main.Test" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-16" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="2DGameEngine" />
       <selectedOptions>
         <option name="environmentVariables" visible="false" />
@@ -109,6 +135,23 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (2)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.chad.engine.Test" />
+      <selectedOptions>
+        <option name="environmentVariables" visible="false" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.chad.engine.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,6 +167,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.Functions" />
       </list>
@@ -141,7 +185,13 @@
       <option name="presentableId" value="Default" />
       <updated>1621003768303</updated>
       <workItem from="1630585172356" duration="2286000" />
-      <workItem from="1630599222809" duration="1133000" />
+      <workItem from="1630599222809" duration="1434000" />
+      <workItem from="1630670931641" duration="111000" />
+      <workItem from="1630671046867" duration="61000" />
+      <workItem from="1630671124079" duration="324000" />
+      <workItem from="1630671624175" duration="318000" />
+      <workItem from="1630671953882" duration="473000" />
+      <workItem from="1630672432393" duration="1231000" />
     </task>
     <servers />
   </component>

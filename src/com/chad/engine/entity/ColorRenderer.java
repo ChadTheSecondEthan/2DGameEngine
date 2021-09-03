@@ -1,5 +1,7 @@
 package com.chad.engine.entity;
 
+import com.chad.engine.gfx.Renderer;
+
 import java.awt.*;
 
 public class ColorRenderer implements Drawable {
@@ -9,9 +11,9 @@ public class ColorRenderer implements Drawable {
     public ColorRenderer(Color color) { this.color = color; }
 
     @Override
-    public void draw(Entity e, Graphics g) {
-        g.setColor(color);
-        g.fillRect((int) e.getX(), (int) e.getY(), (int) e.width, (int) e.height);
+    public void draw(Entity e) {
+        Renderer.setColor(color);
+        Renderer.fill(e.getX(), e.getY(), e.width, e.height);
     }
 
     public Color getColor() { return color; }

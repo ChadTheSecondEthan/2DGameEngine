@@ -1,6 +1,6 @@
 package com.chad.engine;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import com.chad.engine.gameState.GameState;
@@ -13,11 +13,6 @@ public class GameLoop implements Runnable {
 	
 	// target framerate for the loop
 	private int targetFramerate;
-	
-	// graphics for the window
-	private Graphics windowGraphics;
-	private BufferedImage frameImage;
-	private Graphics frameGraphics;
 
 	// the total time and the time in the current state
 	private Time totalTime;
@@ -46,14 +41,7 @@ public class GameLoop implements Runnable {
 	}
 	
 	/** starts the game loop */
-	void start(Graphics windowGraphics) {
-		
-		// set the window graphics
-		this.windowGraphics = windowGraphics;
-		frameImage = new BufferedImage(game.getWindowSize().width, game.getWindowSize().height, BufferedImage.TYPE_INT_RGB);
-		frameGraphics = frameImage.getGraphics();
-		Renderer.setGraphics(frameGraphics);
-		
+	void start() {
 		// create the thread for the game loop
 		new Thread(this).start();
 	}
@@ -81,10 +69,7 @@ public class GameLoop implements Runnable {
 			Mouse.update();
 			
 			// draw with the window graphics
-			game.getWindow().paint(frameGraphics);
-            GameState.current().draw(frameGraphics);
-			
-			windowGraphics.drawImage(frameImage, 0, 0, game.getWindowSize().width, game.getWindowSize().height, null);
+            GameState.current().draw();
 			
 			// get remaining amount of time
 			long targetNanos = 1000000000 / targetFramerate;
@@ -142,6 +127,5 @@ public class GameLoop implements Runnable {
 	}
 
 	public void setStates(GameState[] states) { this.states = states; }
-	public BufferedImage getFrameImage() { return frameImage; }
 
 }

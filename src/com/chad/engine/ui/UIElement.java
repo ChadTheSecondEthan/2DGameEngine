@@ -4,8 +4,9 @@ import com.chad.engine.entity.*;
 import com.chad.engine.Game;
 import com.chad.engine.utils.Mathf;
 import com.chad.engine.utils.Mouse;
+import com.chad.engine.Window;
 
-import java.awt.*;
+import java.awt.Point;
 
 public class UIElement extends Entity {
 
@@ -28,12 +29,12 @@ public class UIElement extends Entity {
 	}
 
 	public void centerX() {
-		anchor.x = Game.instance.getWindowSize().width / 2;
+		anchor.x = Window.width / 2;
 //	    setX((Game.instance().getWindowSize().width - width) * 0.5f);
     }
 
     public void centerY() {
-		anchor.y = Game.instance.getWindowSize().height / 2;
+		anchor.y = Window.height / 2;
 //        setY((Game.instance().getWindowSize().height - height) * 0.5f);
     }
 
@@ -101,13 +102,13 @@ public class UIElement extends Entity {
 						anchor.x = 0;
 						return true;
 					case "right":
-						anchor.x = Game.instance.getWindowSize().width;
+						anchor.x = Window.width;
 						return true;
 					case "top":
 						anchor.y = 0;
 						return true;
 					case "bottom":
-						anchor.y = Game.instance.getWindowSize().height;
+						anchor.y = Window.height;
 						return true;
 				}
 				break;

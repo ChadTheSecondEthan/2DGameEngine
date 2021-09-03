@@ -1,11 +1,11 @@
 package com.chad.engine.ui;
 
 import com.chad.engine.entity.*;
-import com.chad.engine.Game;
+import com.chad.engine.Window;
 import com.chad.engine.utils.Mathf;
 import com.chad.engine.utils.Mouse;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class ScrollView extends UIElement {
 
@@ -46,7 +46,7 @@ public class ScrollView extends UIElement {
         topMask.setBounds(getAbsoluteX(), 0, width, getAbsoluteY());
 
         int bottom = (int) (getAbsoluteY() + height);
-        bottomMask.setBounds(getAbsoluteX(), bottom, width, Game.instance.getWindowSize().height - bottom);
+        bottomMask.setBounds(getAbsoluteX(), bottom, width, Window.height - bottom);
     }
 
     @Override

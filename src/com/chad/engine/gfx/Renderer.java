@@ -1,6 +1,7 @@
 package com.chad.engine.gfx;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.*;
 
 public class Renderer {
@@ -47,6 +48,11 @@ public class Renderer {
 
     public static void fill(int x, int y, int w, int h) { graphics.fillRect(x, y, w, h); }
     public static void fill(float x, float y, float w, float h) { graphics.fillRect((int)x, (int)y, (int)w, (int)h); }
+
+    public static void draw(BufferedImage image, int x, int y, int width, int height) { graphics.drawImage(image, x, y, width, height, null); }
+    public static void draw(BufferedImage image, int x, int y) { graphics.drawImage(image, x, y, null); }
+    public static void draw(BufferedImage image, float x, float y, float width, float height) { graphics.drawImage(image, (int)x, (int)y, (int)width, (int)height, null); }
+    public static void draw(BufferedImage image, float x, float y) { graphics.drawImage(image, (int)x, (int)y, null); }
 
     public static void drawString(String s, int x, int y) { graphics.drawString(s, x, y); }
     public static void drawString(String s, float x, float y) { graphics.drawString(s, (int)x, (int)y); }

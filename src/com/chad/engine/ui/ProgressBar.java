@@ -47,42 +47,27 @@ public class ProgressBar extends UIElement {
 	public double getProgress() {
 		return progress;
 	}
-
 	public int getFillWidth() {
 		return fillWidth;
 	}
-
 	public Color getFillColor() {
 		return fillColor;
 	}
-
 	public Color getBackgroundColor() {
 		return backgroundColor;
 	}
+
+	public int getMinDrawWidth() { return minDrawWidth; }
 
 	public void setProgress(double progress) {
 		if (progress <= 1 && progress >= 0)
 			this.progress = (float) progress;
 	}
 
-	public void setFillWidth(int fillWidth) {
-		this.fillWidth = fillWidth;
-	}
+	public void setFillWidth(int fillWidth) { this.fillWidth = fillWidth; }
+	public void setFillColor(Color fillColor) { this.fillColor = fillColor; }
+	public void setBackgroundColor(Color backgroundColor) { this.backgroundColor = backgroundColor; }
 
-	public void setFillColor(Color fillColor) {
-		this.fillColor = fillColor;
-	}
-
-	public void setBackgroundColor(Color backgroundColor) {
-		this.backgroundColor = backgroundColor;
-	}
-
-	public int getMinDrawWidth() {
-		return minDrawWidth;
-	}
-
-	public void setMinDrawWidth(int minDrawWidth) {
-		this.minDrawWidth = minDrawWidth;
-	}
+	public void setMinDrawWidth(int minDrawWidth) { this.minDrawWidth = minDrawWidth; }
 
 }

@@ -9,24 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Control.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2DGameEngine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2DGameEngine.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/GameLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Font.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Sprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Spritesheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Spritesheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ScrollView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/ScrollView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/UIElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/ui/UIElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/utils/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/utils/Keyboard.java" afterDir="false" />
-    </list>
+    <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

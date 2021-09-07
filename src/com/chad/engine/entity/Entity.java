@@ -1,6 +1,7 @@
 package com.chad.engine.entity;
 
 import java.awt.*;
+import java.sql.Array;
 import java.util.ArrayList;
 
 import com.chad.engine.gameState.GameState;
@@ -44,7 +45,7 @@ public abstract class Entity {
 	private String name;
 	private boolean useListeners;
 
-	public Entity() {
+	public Entity(ArrayList<String> attrList) {
 		id = ID;
 		ID++;
 		zIndex = 0;
@@ -54,7 +55,18 @@ public abstract class Entity {
 		useListeners = true;
 
 		parent = null;
+
+		if (attrList != null) {
+			for (int i = 0; i < attrList.size(); i += 2)
+				try {
+					setAttribute(attrList.get(i), attrList.get(i + 1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
 	}
+
+	public Entity() { this(null); }
 	
 	/** destroys this entity */
 	public void destroy() {
@@ -144,7 +156,7 @@ public abstract class Entity {
 		try {
 			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
 			doc.getDocumentElement().normalize();
-			Entity entity = (Entity) Class.forName(doc.getDocumentElement().getNodeName()).newInstance();
+			Entity entity = (Entity) Class.forName(doc.getDocumentElement().getNodeName()).getDeclaredConstructor().newInstance();
 
 			NodeList children = doc.getDocumentElement().getChildNodes();
 			if (children != null && children.getLength() != 0)
@@ -164,26 +176,20 @@ public abstract class Entity {
 			if (node.getNodeType() != Node.ELEMENT_NODE)
 				continue;
 
+			NamedNodeMap map = node.getAttributes();
+
+			ArrayList<String> attrList = new ArrayList<>();
+			for (int i = 0; i < map.getLength(); i++) {
+				attrList.add(map.item(i).getNodeName().toLowerCase());
+				attrList.add(map.item(i).getNodeValue().toLowerCase());
+			}
+
 			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).getDeclaredConstructor().newInstance();
 			entity.setParent(parent);
 			entity.spawn();
 
-			if (entity instanceof com.chad.engine.ui.Text)
-				((com.chad.engine.ui.Text) entity).setText(node.getTextContent());
-
 			if (node.getChildNodes() != null)
 				createChildren(entity, node.getChildNodes());
-
-			NamedNodeMap map = node.getAttributes();
-
-			for (int i = 0; i < map.getLength(); i++)
-				try {
-					if (!entity.setAttribute(map.item(i).getNodeName().toLowerCase(),
-							map.item(i).getNodeValue().toLowerCase()))
-						System.err.println("Invalid attribute: " + map.item(i).getNodeName());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 		}
 	}
 

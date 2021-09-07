@@ -1,6 +1,10 @@
 package com.chad.engine;
 
+import com.chad.engine.entity.Entity;
 import com.chad.engine.gameState.GameState;
+import com.chad.engine.ui.ColorRenderer;
+
+import java.util.ArrayList;
 
 public class Test {
 
@@ -20,7 +24,16 @@ public class Test {
 		}
 
 		@Override
-		public void init() {}
+		public void init() {
+			int index = 0;
+			for (Entity e : getEntities())
+				if (e instanceof ColorRenderer) {
+					e.setBounds(index * 125, 0, 100, 100);
+					((ColorRenderer) e).centerY();
+
+					index++;
+				}
+		}
 	}
 
 }

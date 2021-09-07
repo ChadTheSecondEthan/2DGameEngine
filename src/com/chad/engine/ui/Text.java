@@ -47,6 +47,15 @@ public class Text extends UIElement {
 		// draw the string
 		Renderer.drawString(text, drawX, (int) getY());
 	}
+
+	@Override
+	public boolean setAttribute(String attr, String value) throws Exception {
+		if (attr.equals("text")) {
+			text = value;
+			return true;
+		}
+		return super.setAttribute(attr, value);
+	}
 	
 	/**
 	 * 

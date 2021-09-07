@@ -42,12 +42,9 @@ public class Renderer {
         return result;
     }
 
-    public static void clear() {
-        Arrays.fill(Renderer.pixels, 0);
-    }
-
     public static void fill(int x, int y, int w, int h) { graphics.fillRect(x, y, w, h); }
     public static void fill(float x, float y, float w, float h) { graphics.fillRect((int)x, (int)y, (int)w, (int)h); }
+    public static void fill() { graphics.fillRect(0, 0, com.chad.engine.Window.width, com.chad.engine.Window.height);}
 
     public static void draw(BufferedImage image, int x, int y, int width, int height) { graphics.drawImage(image, x, y, width, height, null); }
     public static void draw(BufferedImage image, int x, int y) { graphics.drawImage(image, x, y, null); }

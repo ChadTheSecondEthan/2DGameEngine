@@ -1,6 +1,5 @@
 package com.chad.engine.gameState;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -37,7 +36,7 @@ public abstract class GameState {
 
 	public GameState() {
 
-		if (Game.instance.isStarted())
+		if (Game.started)
 			new Exception("Do not create new gamestate objects after that game has started. This results in a memory leak").printStackTrace();
 
 		current = this;
@@ -45,9 +44,6 @@ public abstract class GameState {
 		listeners = new ArrayList<>();
 		entities = new ArrayList<>();
 	}
-
-	public void setState(String state) { Game.instance.getGameLoop().setState(state); }
-	public void setState(int state) { Game.instance.getGameLoop().setState(state); }
 	
 	// spawns an entity
 	public void spawn(Entity e) {
@@ -93,7 +89,7 @@ public abstract class GameState {
 	public ArrayList<Entity> getEntities() { return entities; }
 
 	public void sortEntitiesByZIndex() {
-		entities.sort(Comparator.comparingInt(left -> left.getzIndex()));
+		entities.sort(Comparator.comparingInt(Entity::getzIndex));
 	}
 
 	@SuppressWarnings("unchecked")

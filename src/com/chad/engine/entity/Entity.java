@@ -109,6 +109,10 @@ public abstract class Entity {
 	 */
 	public boolean setAttribute(String attr, String value) throws Exception {
 		switch(attr.toLowerCase()) {
+			case "id":
+				id = Integer.parseInt(value);
+				ID++;
+				return true;
 			case "x":
 				setX(Float.parseFloat(value));
 				return true;
@@ -160,7 +164,7 @@ public abstract class Entity {
 			if (node.getNodeType() != Node.ELEMENT_NODE)
 				continue;
 
-			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).newInstance();
+			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).getDeclaredConstructor().newInstance();
 			entity.setParent(parent);
 			entity.spawn();
 

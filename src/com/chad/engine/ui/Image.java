@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class Image extends UIElement {
 
+    public Image() { this(null); }
+
     public Image(BufferedImage image) {
         super();
 

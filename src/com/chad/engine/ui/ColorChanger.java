@@ -3,6 +3,7 @@ package com.chad.engine.ui;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.chad.engine.Global;
 import com.chad.engine.entity.Drawable;
 import com.chad.engine.entity.Entity;
 import com.chad.engine.Game;
@@ -21,13 +22,11 @@ public class ColorChanger implements Drawable {
 	}
 
 	@Override
-	public void draw(Entity e) {
-		float dt = Game.instance.getGameLoop().deltaTime();
-		if (dt > 0.1f) dt = 0.1f;
-		curColor = Mathf.lerpColor(curColor, lerpColor, dt * 10);
+	public void draw(Entity e) {;
+		curColor = Mathf.lerpColor(curColor, lerpColor, Math.min(Global.dt, 0.1f) * 10);
 
 		Renderer.setColor(curColor);
-		Renderer.fill((int) e.getX(), (int) e.getY(), (int) e.getWidth(), (int) e.getHeight());
+		Renderer.fill(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 	}
 
 	public void setCurrentColor(Color curColor) { this.curColor = curColor; }

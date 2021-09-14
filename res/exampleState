@@ -1,5 +1,5 @@
 <GameState>
-    <tile.TileMap src="tilemap.txt" />
+    <tile.TileMap src="tilemap.txt" center-x="true" center-y="true" />
     <ui.ColorRenderer id="0" />
     <ui.ColorRenderer id="0" />
     <ui.ColorRenderer id="0" />

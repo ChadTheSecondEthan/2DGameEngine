@@ -3,6 +3,7 @@ package com.chad.engine.entity;
 import java.awt.*;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.chad.engine.gameState.GameState;
 import com.chad.engine.utils.GameFile;
@@ -17,14 +18,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 @SuppressWarnings({"WeakerAccess", "unused", "unchecked"})
 public abstract class Entity {
 
-	private static int ID = 0;
+	private static int ID = Integer.MAX_VALUE;
 
 	public static final byte DESTROY = 0;
 	public static final byte SPAWN = 1;
 	public static final byte DESPAWN = 2;
 
 	// listeners
-	private ArrayList<Listener> listeners;
+	private final ArrayList<Listener> listeners;
 
 	// drawable for the entity
 	protected Drawable drawable;
@@ -37,7 +38,7 @@ public abstract class Entity {
 	protected boolean visible;
 
 	// parent
-	private Entity parent;
+	public Entity parent;
 
 	// misc
 	private int id;
@@ -45,28 +46,18 @@ public abstract class Entity {
 	private String name;
 	private boolean useListeners;
 
-	public Entity(ArrayList<String> attrList) {
+	public Entity() {
 		id = ID;
-		ID++;
+		ID--;
 		zIndex = 0;
 		visible = true;
+		name = "";
 
 		listeners = new ArrayList<>();
 		useListeners = true;
 
 		parent = null;
-
-		if (attrList != null) {
-			for (int i = 0; i < attrList.size(); i += 2)
-				try {
-					setAttribute(attrList.get(i), attrList.get(i + 1));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-		}
 	}
-
-	public Entity() { this(null); }
 	
 	/** destroys this entity */
 	public void destroy() {
@@ -176,17 +167,18 @@ public abstract class Entity {
 			if (node.getNodeType() != Node.ELEMENT_NODE)
 				continue;
 
+			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).getDeclaredConstructor().newInstance();
+			entity.parent = parent;
+			entity.spawn();
+
 			NamedNodeMap map = node.getAttributes();
 
-			ArrayList<String> attrList = new ArrayList<>();
-			for (int i = 0; i < map.getLength(); i++) {
-				attrList.add(map.item(i).getNodeName().toLowerCase());
-				attrList.add(map.item(i).getNodeValue().toLowerCase());
-			}
-
-			Entity entity = (Entity) Class.forName("com.chad.engine." + node.getNodeName()).getDeclaredConstructor().newInstance();
-			entity.setParent(parent);
-			entity.spawn();
+			for (int i = 0; i < map.getLength(); i++)
+				try {
+					entity.setAttribute(map.item(i).getNodeName().toLowerCase(), map.item(i).getNodeValue().toLowerCase());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 			if (node.getChildNodes() != null)
 				createChildren(entity, node.getChildNodes());
@@ -249,16 +241,6 @@ public abstract class Entity {
 		removeListener(type);
 	}
 
-	public void setParent(Entity parent) {
-		if (parent == null) {
-			if (this.parent != null)
-				this.parent.removeChild(this);
-		} else
-			parent.addChild(this);
-	}
-
-	public Entity getParent() { return parent; }
-
 	public void addChild(Entity child) { child.parent = this; }
 	public void removeChild(Entity child) { child.parent = null; }
 
@@ -272,8 +254,9 @@ public abstract class Entity {
 	}
 
 	public void removeChildren() {
-		for (Entity e : getChildrenList())
-			e.setParent(null);
+		for (Entity e : GameState.current().getEntities())
+			if (e.parent == this)
+				e.parent = null;
 	}
 
 	public Entity[] getChildrenArray() { return getChildrenList().toArray(new Entity[0]); }
@@ -364,7 +347,10 @@ public abstract class Entity {
 	public void generateNewId() { this.id = ID; ID++; }
 
 	public String getName() { return name; }
-	public void setName(String name) { this.name = name; }
+	public void setName(String name) {
+		assert name != null;
+		this.name = name;
+	}
 
 	public boolean usesListeners() { return useListeners; }
 	public void setUseListeners(boolean useListeners) { this.useListeners = useListeners; }

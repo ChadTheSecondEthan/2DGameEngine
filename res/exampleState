@@ -1,12 +1,13 @@
 <GameState>
-    <ui.Image id="1" />
-    <ui.Image id="2" />
-    <ui.Image id="3" />
-    <ui.Image id="4" />
-    <ui.Image id="5" />
-    <ui.Image id="6" />
-    <ui.Image id="7" />
-    <ui.Image id="8" />
-    <ui.Image id="9" />
-    <ui.Image id="10" />
+    <tile.TileMap src="tilemap.txt" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
+    <ui.ColorRenderer id="0" />
 </GameState>

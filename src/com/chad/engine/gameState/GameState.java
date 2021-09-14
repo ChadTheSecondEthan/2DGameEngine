@@ -94,21 +94,36 @@ public abstract class GameState {
 
 	@SuppressWarnings("unchecked")
 	public <T extends Entity> T findEntityById(int id) {
-		for (Entity entity : entities) {
+		for (Entity entity : entities)
 			if (entity.getId() == id)
 				return (T) entity;
-		}
 		return null;
 	}
 
 	@SuppressWarnings("unchecked")
+	public <T extends Entity> ArrayList<T> findEntitiesById(int id) {
+		ArrayList<T> list = new ArrayList<>();
+		for (Entity entity : entities)
+			if (entity.getId() == id)
+				list.add((T) entity);
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
 	public <T extends Entity> T findEntityByName(String name) {
-		for (Entity entity : entities) {
-			String eName = entity.getName();
-			if (eName != null && eName.equals(name))
+		for (Entity entity : entities)
+			if (entity.getName().equals(name))
 				return (T) entity;
-		}
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends Entity> ArrayList<T> findEntitiesByName(String name) {
+		ArrayList<T> list = new ArrayList<>();
+		for (Entity entity : entities)
+			if (entity.getName().equals(name))
+				list.add((T) entity);
+		return list;
 	}
 
 	public void readEntitiesFromFile(String fileName) {

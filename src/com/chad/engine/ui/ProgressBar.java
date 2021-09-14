@@ -3,7 +3,6 @@ package com.chad.engine.ui;
 import com.chad.engine.gfx.Renderer;
 
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class ProgressBar extends UIElement {
 	
@@ -33,7 +32,7 @@ public class ProgressBar extends UIElement {
 		int drawWidth = (int) ((width - fillWidth * 2) * progress);
 		if (drawWidth < minDrawWidth)
 			drawWidth = minDrawWidth;
-		Renderer.fill((int) getX() + fillWidth, (int) getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
+		Renderer.fill((int)getX() + fillWidth, (int)getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
 	}
 
 	@Override
@@ -70,7 +69,6 @@ public class ProgressBar extends UIElement {
 	public void setFillWidth(int fillWidth) {
 		this.fillWidth = fillWidth;
 	}
-
 	public void setFillColor(Color fillColor) {
 		this.fillColor = fillColor;
 	}

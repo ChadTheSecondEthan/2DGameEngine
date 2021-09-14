@@ -85,4 +85,7 @@ public class Window {
     public static Graphics getGraphics() { return frameGraphics; }
     public static Dimension getSize() { return frame.getSize(); }
     public static BufferedImage getFrameImage() { return frameImage; }
+
+    public static float getWidth() { return frame.getWidth(); }
+    public static float getHeight() { return frame.getHeight(); }
 }

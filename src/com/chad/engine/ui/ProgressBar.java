@@ -1,7 +1,8 @@
 package com.chad.engine.ui;
 
+import com.chad.engine.gfx.Renderer;
+
 import java.awt.Color;
-import java.awt.Graphics;
 
 public class ProgressBar extends UIElement {
 	
@@ -23,15 +24,15 @@ public class ProgressBar extends UIElement {
 	}
 
 	@Override
-	public void draw(Graphics g) {
-		g.setColor(backgroundColor);
-		g.fillRect((int) getX(), (int) getY(), (int)width, (int)height);
-		g.setColor(fillColor);
+	public void draw() {
+		Renderer.setColor(backgroundColor);
+		Renderer.fill(getX(), getY(), width, height);
+		Renderer.setColor(fillColor);
 		
 		int drawWidth = (int) ((width - fillWidth * 2) * progress);
 		if (drawWidth < minDrawWidth)
 			drawWidth = minDrawWidth;
-		g.fillRect((int) getX() + fillWidth, (int) getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
+		Renderer.fill((int)getX() + fillWidth, (int)getY() + fillWidth, drawWidth, ((int)height - fillWidth * 2));
 	}
 
 	@Override
@@ -47,27 +48,41 @@ public class ProgressBar extends UIElement {
 	public double getProgress() {
 		return progress;
 	}
+
 	public int getFillWidth() {
 		return fillWidth;
 	}
+
 	public Color getFillColor() {
 		return fillColor;
 	}
+
 	public Color getBackgroundColor() {
 		return backgroundColor;
 	}
-
-	public int getMinDrawWidth() { return minDrawWidth; }
 
 	public void setProgress(double progress) {
 		if (progress <= 1 && progress >= 0)
 			this.progress = (float) progress;
 	}
 
-	public void setFillWidth(int fillWidth) { this.fillWidth = fillWidth; }
-	public void setFillColor(Color fillColor) { this.fillColor = fillColor; }
-	public void setBackgroundColor(Color backgroundColor) { this.backgroundColor = backgroundColor; }
+	public void setFillWidth(int fillWidth) {
+		this.fillWidth = fillWidth;
+	}
+	public void setFillColor(Color fillColor) {
+		this.fillColor = fillColor;
+	}
 
-	public void setMinDrawWidth(int minDrawWidth) { this.minDrawWidth = minDrawWidth; }
+	public void setBackgroundColor(Color backgroundColor) {
+		this.backgroundColor = backgroundColor;
+	}
+
+	public int getMinDrawWidth() {
+		return minDrawWidth;
+	}
+
+	public void setMinDrawWidth(int minDrawWidth) {
+		this.minDrawWidth = minDrawWidth;
+	}
 
 }

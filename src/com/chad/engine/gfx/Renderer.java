@@ -1,5 +1,7 @@
 package com.chad.engine.gfx;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.*;
 
 public class Renderer {
@@ -14,6 +16,8 @@ public class Renderer {
     // screen pixels, each entry in [0..216) referring to palette entry
     // palette is determined by Window
     public static int[] pixels = new int[WIDTH * HEIGHT];
+
+    private static Graphics graphics;
 
     // generates color palette, 24-bpp RGB
     public static int[] generatePalette() {
@@ -38,91 +42,22 @@ public class Renderer {
         return result;
     }
 
-    public static void clear() {
-        Arrays.fill(Renderer.pixels, 0);
-    }
+    public static void fill(int x, int y, int w, int h) { graphics.fillRect(x, y, w, h); }
+    public static void fill(float x, float y, float w, float h) { graphics.fillRect((int)x, (int)y, (int)w, (int)h); }
+    public static void fill() { graphics.fillRect(0, 0, com.chad.engine.Window.width, com.chad.engine.Window.height);}
 
-    public static void fill(int x, int y, int w, int h, int color) {
-        // check if entirely offscreen
-        if (x + w < 0 || y + h < 0) {
-            return;
-        }
+    public static void draw(BufferedImage image, int x, int y, int width, int height) { graphics.drawImage(image, x, y, width, height, null); }
+    public static void draw(BufferedImage image, int x, int y) { graphics.drawImage(image, x, y, null); }
+    public static void draw(BufferedImage image, float x, float y, float width, float height) { graphics.drawImage(image, (int)x, (int)y, (int)width, (int)height, null); }
+    public static void draw(BufferedImage image, float x, float y) { graphics.drawImage(image, (int)x, (int)y, null); }
 
-        for (int yy = y; yy < y + h && yy < Renderer.HEIGHT; yy++) {
-            if (yy < 0) {
-                continue;
-            }
+    public static void drawString(String s, int x, int y) { graphics.drawString(s, x, y); }
+    public static void drawString(String s, float x, float y) { graphics.drawString(s, (int)x, (int)y); }
 
-            for (int xx = x; xx < x + w && xx < Renderer.WIDTH; xx++) {
-                if (xx < 0) {
-                    continue;
-                }
+    public static void setFont(Font font) { graphics.setFont(font); }
+    public static void setColor(java.awt.Color color) { graphics.setColor(color); }
+    public static void setGraphics(Graphics graphics) { Renderer.graphics = graphics; }
 
-                Renderer.pixels[yy * Renderer.WIDTH + xx] = Color.map(color);
-            }
-        }
-    }
-
-    public static void render(Sprite sprite, int x, int y, int color) {
-        if (x + sprite.width < 0 || y + sprite.height < 0) {
-            return;
-        }
-
-        for (int yy = y, ys = 0; yy < y + sprite.height && yy < Renderer.HEIGHT; yy++, ys++) {
-            if (yy < 0) {
-                continue;
-            }
-
-            for (int xx = x, xs = 0; xx < x + sprite.width && xx < Renderer.WIDTH; xx++, xs++) {
-                if (xx < 0) {
-                    continue;
-                }
-
-                int p = sprite.pixels[ys * sprite.width + xs];
-                if (p >= 0) {
-                    Renderer.pixels[yy * Renderer.WIDTH + xx] = (color >> (p * 8)) & 0xFF;
-                }
-            }
-        }
-    }
-
-//    public static void render(int s, int x, int y, int color, int flags) {
-//        Renderer.render(
-//            s % Renderer.spritesheet.sizeSprites,
-//            s / Renderer.spritesheet.sizeSprites,
-//            x, y, color, flags
-//        );
-//    }
-
-//    public static void render(int sx, int sy, int x, int y, int color, int flags) {
-//        int posX = x - camera.tx, posY = y - camera.ty,
-//            minX = sx * Renderer.spritesheet.size, minY = sy * Renderer.spritesheet.size,
-//            maxX = minX + Renderer.spritesheet.size, maxY = minY + Renderer.spritesheet.size;
-//
-//        // sprite will not be shown at all
-//        if (posX + Renderer.spritesheet.size < 0 || posY + Renderer.spritesheet.size < 0) {
-//            return;
-//        }
-//
-//        for (int ys = minY, yr = posY; ys < maxY && yr < Renderer.HEIGHT; ys++, yr++) {
-//            if (yr < 0) {
-//                continue;
-//            }
-//
-//            for (int xs = minX, xr = posX; xs < maxX && xr < Renderer.WIDTH; xs++, xr++) {
-//                if (xr < 0) {
-//                    continue;
-//                }
-//
-//                int p = Renderer.spritesheet.pixels[
-//                    ((flags & FLIP_Y) == 0 ? ys : (Renderer.spritesheet.size - (ys - minY) - 1 + minY))
-//                        * Renderer.spritesheet.width +
-//                        ((flags & FLIP_X) == 0 ? xs : (Renderer.spritesheet.size - (xs - minX) - 1 + minX))];
-//
-//                if (p >= 0) {
-//                    Renderer.pixels[yr * Renderer.WIDTH + xr] = (color >> (p * 8)) & 0xFF;
-//                }
-//            }
-//        }
-//    }
+    public static Font getFont() { return graphics.getFont(); }
+    public static FontMetrics getFontMetrics() { return graphics.getFontMetrics(); }
 }

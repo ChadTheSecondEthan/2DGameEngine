@@ -1,23 +1,20 @@
 package com.chad.engine.entity;
 
 import com.chad.engine.Game;
+import com.chad.engine.Window;
 
 import java.awt.image.BufferedImage;
 
 public class Mask extends Entity {
 
-    private BufferedImage frameImage;
-
     public Mask() {
         super();
 
         drawable = new SpriteRenderer();
-
-        frameImage = Game.instance.getGameLoop().getFrameImage();
     }
 
     @Override
     public void update(float dt) {
-        ((SpriteRenderer) drawable).setImage(frameImage.getSubimage((int) getX(), (int) getY(), (int) getWidth(), (int) getHeight()));
+        ((SpriteRenderer) drawable).setImage(Window.getFrameImage().getSubimage((int) getX(), (int) getY(), (int) getWidth(), (int) getHeight()));
     }
 }

@@ -5,10 +5,10 @@ import com.chad.engine.gameState.GameState;
 public class Test {
 
 	public static void main(String[] args) {
-		Game game = new Game("Test");
+		Game.init("Test");
 
-		game.setStates(new ExampleState());
-		game.start(0);
+		Game.setStates(new ExampleState());
+		Game.start(0);
 	}
 
 	static class ExampleState extends GameState {

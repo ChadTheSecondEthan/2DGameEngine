@@ -1,5 +1,6 @@
 package com.chad.engine.entity;
 
+import com.chad.engine.gfx.Renderer;
 import com.chad.engine.utils.Resources;
 
 import java.awt.*;
@@ -20,8 +21,8 @@ public class SpriteRenderer implements Drawable {
 
     public SpriteRenderer() {}
 
-    public void draw(Entity e, Graphics g) {
-        g.drawImage(image, (int) e.getX(), (int) e.getY(), (int) e.width, (int) e.height, null);
+    public void draw(Entity e) {
+        Renderer.draw(image, e.getX(), e.getY(), e.width, e.height);
     }
 
     public BufferedImage getImage() { return image; }

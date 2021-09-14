@@ -270,6 +270,14 @@ public abstract class Entity {
 		return children;
 	}
 
+	public void printHierarchy() {
+		System.out.println(name.length() != 0 ? (name + ": ") : "" + getClass().getSimpleName());
+
+		for (Entity child : getChildrenList()) {
+			child.printHierarchy();
+		}
+	}
+
 	/** set position relative to parent */
 	public void setPosition(float x, float y) {
 		setX(x);
@@ -307,29 +315,17 @@ public abstract class Entity {
 	public final float getWidth() { return width; }
 	public final float getHeight() { return height; }
 
-	public final void setX(float x) { this.x = x; }
-	public final void setY(float y) { this.y = y; }
+	public final void setX(float x) { setAbsoluteX(x); }
+	public final void setY(float y) { setAbsoluteY(y); }
 
-	public final void setRelativeX(float x) {
-		setX(x);
-	}
-	public final void setRelativeY(float y) {
-		setY(y);
-	}
+	public final void setRelativeX(float x) { this.x = x; }
+	public final void setRelativeY(float y) { this.y = y; }
 
-	public final void setAbsoluteX(float x) {
-		this.x = x - (parent == null ? 0 : parent.getX());
-	}
-	public final void setAbsoluteY(float y) {
-		this.y = y - (parent == null ? 0 : parent.getY());
-	}
+	public final void setAbsoluteX(float x) { this.x = x - (parent == null ? 0 : parent.getX()); }
+	public final void setAbsoluteY(float y) { this.y = y - (parent == null ? 0 : parent.getY()); }
 
-	public final void setWidth(float width) {
-		this.width = width;
-	}
-	public final void setHeight(float height) {
-		this.height = height;
-	}
+	public final void setWidth(float width) { this.width = width; }
+	public final void setHeight(float height) { this.height = height; }
 
 	public int getzIndex() { return zIndex; }
 	public void setzIndex(int zIndex) {

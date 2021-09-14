@@ -103,16 +103,16 @@ class Move extends Tween {
 
 class Oscillate extends Tween {
 	
-	private float amp;
-	private float start;
-	private float freq;
-	private float offset;
-	private boolean x;
+	private final float amp;
+	private final float start;
+	private final float freq;
+	private final float offset;
+	private final boolean x;
 	
 	Oscillate(Entity object, float amp, float freq, float offset, boolean x) {
 		super(object);
 		this.amp = amp;
-		start = x ? object.getX() : object.getY();
+		this.start = x ? object.getX() : object.getY();
 		this.freq = freq;
 		this.offset = offset;
 		this.x = x;
@@ -123,7 +123,7 @@ class Oscillate extends Tween {
 		passed += dt;
 		
 		float cur = (float) (amp * Math.sin(2 * Math.PI * freq * passed + offset)) + start;
-		
+
 		if (x) object.setX(cur);
 		else object.setY(cur);
 	}

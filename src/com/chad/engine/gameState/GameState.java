@@ -210,6 +210,13 @@ public abstract class GameState {
 		removeListener(l);
 	}
 
+	public void printHierarchy() {
+		ArrayList<Entity> printed = new ArrayList<>();
+		for (Entity e : entities) {
+			e.printHierarchy();
+		}
+	}
+
 	public static GameState current() { return current; }
 	public static void setCurrent(GameState state) { current = state; }
 }

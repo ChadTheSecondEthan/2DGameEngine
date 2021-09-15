@@ -1,7 +1,5 @@
 package com.chad.engine.tile;
 
-import com.chad.engine.Global;
-import com.chad.engine.Window;
 import com.chad.engine.entity.Entity;
 import com.chad.engine.gfx.Renderer;
 import com.chad.engine.gfx.Spritesheet;
@@ -76,6 +74,9 @@ public class TileMap extends Entity {
                 value = value * 10 + line.charAt(j) - 48;
             }
 
+            for (; index < tx; index++)
+                tileLine[index] = (short) value;
+
             // add this to the tiles array
             tiles[i] = tileLine;
         }
@@ -93,8 +94,8 @@ public class TileMap extends Entity {
         // draw each tile
         for (int x = 0; x < tx; x++)
             for (int y = 0; y < ty; y++)
-                Renderer.draw(spritesheet.getSprite(tiles[x][y] + 10), y * tileSize + ox,
-                        x * tileSize + oy, tileSize, tileSize);
+                Renderer.draw(spritesheet.getSprite(tiles[y][x]), x * tileSize + ox,
+                        y * tileSize + oy, tileSize, tileSize);
     }
 
     public boolean checkTileCollisions(Entity other) {
@@ -104,14 +105,15 @@ public class TileMap extends Entity {
 
     @Override
     public boolean setAttribute(String attr, String value) throws Exception {
-        switch (attr) {
-            case "src":
-                getTiles(value);
-                return true;
+        if ("src".equals(attr)) {
+            getTiles(value);
+            return true;
         }
         return super.setAttribute(attr, value);
     }
 
     public void setSpritesheet(Spritesheet s) { spritesheet = s; }
+    public void setTile(int x, int y, int tile) { tiles[x][y] = (short) tile; }
+    public void setTile(int index, int tile) { tiles[index / tx][index / ty] = (short) tile; }
 
 }

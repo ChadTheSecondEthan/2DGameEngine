@@ -1,10 +1,12 @@
 package com.chad.engine;
 
-import com.chad.engine.entity.Entity;
 import com.chad.engine.entity.tween.Tween;
 import com.chad.engine.gameState.GameState;
+import com.chad.engine.gfx.Spritesheet;
+import com.chad.engine.tile.TileMap;
 import com.chad.engine.ui.ColorRenderer;
 import com.chad.engine.utils.Functions;
+import com.chad.engine.utils.Stats;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,12 @@ public class Test {
 			// initialize tweens
 			tweens = new ArrayList<>();
 
-			findEntityById(1).setVisible(false);
+			// add spritesheet to tile map
+			TileMap tm = findEntityById(1);
+			tm.setSpritesheet(new Spritesheet("exampleTilemap.png", 512 / 8));
+
+			// create stats
+			Stats s = Stats.find("testStats");
 
 			// get color renderers from the game state
 			squares = findEntitiesById(0);
@@ -47,8 +54,6 @@ public class Test {
 
 				tweens.add(Tween.oscillateY(squares.get(i), 100, 1, (float) Math.PI * 2 * ((float) i / squares.size())));
 			}
-
-			printHierarchy();
 		}
 
 		@Override

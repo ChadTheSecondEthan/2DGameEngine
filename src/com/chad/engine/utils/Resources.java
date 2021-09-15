@@ -8,7 +8,13 @@ import java.util.HashMap;
 public class Resources {
 
     // holds all of the image paths loaded along with the image it corresponds to
-    private static HashMap<String, BufferedImage> imagesLoaded = new HashMap<>();
+    private static final HashMap<String, BufferedImage> imagesLoaded = new HashMap<>();
+
+    private final static File resources;
+
+    static {
+        resources = new File("./res/");
+    }
 
     /** loads an image within the resources folder
      * @param path the path of the image, not beginning

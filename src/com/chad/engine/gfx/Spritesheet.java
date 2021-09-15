@@ -1,5 +1,7 @@
 package com.chad.engine.gfx;
 
+import com.chad.engine.utils.Resources;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -7,32 +9,35 @@ import java.util.Objects;
 
 public class Spritesheet {
     // sprite sheet size in pixels
-    public int width, height;
+    public final int width, height;
+
+    // sprite sheet size in tiles
+    public final int tx, ty;
 
     // sprite sprite size
-    public int size;
+    public final int size;
 
     // subimages
-    private BufferedImage[][] sprites;
+    private final BufferedImage[][] sprites;
 
     public Spritesheet(String path, int size) {
         this.size = size;
 
-        try {
-            BufferedImage image = ImageIO.read(Objects.requireNonNull(Spritesheet.class.getResourceAsStream(path)));
-            width = image.getWidth();
-            height = image.getHeight();
+        BufferedImage image = Resources.loadImage(path);
+        width = image.getWidth();
+        height = image.getHeight();
 
-            sprites = new BufferedImage[width][height];
+        assert width % size == 0 && height % size == 0;
 
-            for (int w = 0; w < width / size; w++)
-                for (int h = 0; h < height / size; h++)
-                    sprites[w][h] = image.getSubimage(w * size, h * size, size, size);
+        tx = width / size;
+        ty = height / size;
 
-        } catch (IOException e) {
-            throw new Error(e);
-        }
+        sprites = new BufferedImage[tx][ty];
+
+        for (int w = 0; w < width / size; w++)
+            for (int h = 0; h < height / size; h++)
+                sprites[w][h] = image.getSubimage(w * size, h * size, size, size);
     }
 
-    public BufferedImage getSprite(int index) { return sprites[index / size][index % size]; }
+    public BufferedImage getSprite(int index) { return sprites[index / ty][index % tx]; }
 }

@@ -2,45 +2,10 @@ package com.chad.engine.gfx;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
 
 public class Renderer {
-    public static final int[] DITHER = new int[]{0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5};
-
-    // renderer flags
-    public static final int FLIP_NONE = 0x00, FLIP_X = 0x01, FLIP_Y = 0x02, FLIP_XY = FLIP_X | FLIP_Y;
-
-    // target width/height
-    public static final int WIDTH = 256, HEIGHT = 144;
-
-    // screen pixels, each entry in [0..216) referring to palette entry
-    // palette is determined by Window
-    public static int[] pixels = new int[WIDTH * HEIGHT];
 
     private static Graphics graphics;
-
-    // generates color palette, 24-bpp RGB
-    public static int[] generatePalette() {
-        int[] result = new int[256];
-
-        int i = 0;
-        for (int r = 0; r < 6; r++) {
-            for (int g = 0; g < 6; g++) {
-                for (int b = 0; b < 6; b++) {
-                    int rr = (r * 255) / 5,
-                        gg = (g * 255) / 5,
-                        bb = (b * 255) / 5,
-                        m = (rr * 30 + gg * 59 + bb * 11) / 100;
-
-                    result[i++] = ((((rr + m) / 2) * 230 / 255 + 10) << 16) |
-                        ((((gg + m) / 2) * 230 / 255 + 10) << 8) |
-                        (((bb + m) / 2) * 230 / 255 + 10);
-                }
-            }
-        }
-
-        return result;
-    }
 
     public static void fill(int x, int y, int w, int h) { graphics.fillRect(x, y, w, h); }
     public static void fill(float x, float y, float w, float h) { graphics.fillRect((int)x, (int)y, (int)w, (int)h); }

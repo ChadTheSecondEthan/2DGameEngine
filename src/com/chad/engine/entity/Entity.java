@@ -270,14 +270,6 @@ public abstract class Entity {
 		return children;
 	}
 
-	public void printHierarchy() {
-		System.out.println(name.length() != 0 ? (name + ": ") : "" + getClass().getSimpleName());
-
-		for (Entity child : getChildrenList()) {
-			child.printHierarchy();
-		}
-	}
-
 	/** set position relative to parent */
 	public void setPosition(float x, float y) {
 		setX(x);

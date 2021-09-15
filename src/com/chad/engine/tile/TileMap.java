@@ -1,11 +1,12 @@
 package com.chad.engine.tile;
 
+import com.chad.engine.Global;
+import com.chad.engine.Window;
 import com.chad.engine.entity.Entity;
 import com.chad.engine.gfx.Renderer;
 import com.chad.engine.gfx.Spritesheet;
 import com.chad.engine.utils.GameFile;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class TileMap extends Entity {
@@ -89,14 +90,11 @@ public class TileMap extends Entity {
         float ox = getX();
         float oy = getY();
 
-        oy += tileSize;
-
         // draw each tile
         for (int x = 0; x < tx; x++)
-            for (int y = 0; y < ty; y++) {
-                Renderer.setColor(tiles[x][y] == 0 ? Color.gray : Color.white);
-                Renderer.fill(y * tileSize + ox, x * tileSize + oy, tileSize, tileSize);
-            }
+            for (int y = 0; y < ty; y++)
+                Renderer.draw(spritesheet.getSprite(tiles[x][y] + 10), y * tileSize + ox,
+                        x * tileSize + oy, tileSize, tileSize);
     }
 
     public boolean checkTileCollisions(Entity other) {
@@ -113,5 +111,7 @@ public class TileMap extends Entity {
         }
         return super.setAttribute(attr, value);
     }
+
+    public void setSpritesheet(Spritesheet s) { spritesheet = s; }
 
 }

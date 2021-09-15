@@ -7,10 +7,10 @@ import java.util.*;
 
 public class Stats {
 	
-	private static HashMap<String, Stats> allStats = new HashMap<>();
+	private static final HashMap<String, Stats> allStats = new HashMap<>();
 	private static String defaultPath = "res/stats/";
 	
-	private StatsMap stats;
+	private final StatsMap stats;
 
 	/**
 	 * Creates a new file object for a given file. It will be read from
@@ -18,7 +18,7 @@ public class Stats {
 	 * @param fileName the name of the file <strong>without the extension</strong>
 	 */
 	private Stats(String fileName) {
-		stats = new StatsMap(defaultPath + fileName + ".txt");
+		stats = new StatsMap(defaultPath, fileName + ".txt");
 		allStats.put(fileName, this);
 	}
 
@@ -138,14 +138,20 @@ class StatsMap extends HashMap<String, String> {
 	
 	private File file;
 	
-	public StatsMap(String fileName) {
+	public StatsMap(String dirName, String fileName) {
 		super();
 		
 		try {
-		
-			file = new File(fileName);
-			file.createNewFile();
-			readStats();
+
+			File dir = new File(dirName);
+			if (dir.exists() || dir.mkdir()) {
+
+				file = new File(dirName + fileName);
+				if (file.exists())
+					readStats();
+				else
+					file.createNewFile();
+			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();

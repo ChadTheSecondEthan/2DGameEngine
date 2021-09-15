@@ -70,7 +70,7 @@ public class Window {
     }
 
     public static void draw() {
-        frame.getGraphics().drawImage(frameImage, 0, 0, width, height, null);
+        frame.getContentPane().getGraphics().drawImage(frameImage, 0, 0, width, height, null);
         Renderer.setColor(backgroundColor);
         Renderer.fill();
     }

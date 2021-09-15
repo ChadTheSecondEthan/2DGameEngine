@@ -26,9 +26,8 @@ public class Sound {
 //            this.bytes = stream.readAllBytes();
             this.bytes = new byte[0];
 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++)
                 this.createNewClip();
-            }
         } catch (IOException | UnsupportedAudioFileException e) {
             throw new Error(e);
         }

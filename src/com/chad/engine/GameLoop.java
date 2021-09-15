@@ -39,6 +39,7 @@ public class GameLoop implements Runnable {
 			Global.dt = updateTime.getElapsed();
             GameState.current().update(Global.dt);
 			updateTime.reset();
+			Global.frames++;
 			
 			// update all inputs
 			Keyboard.update();

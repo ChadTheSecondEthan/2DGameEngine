@@ -138,16 +138,18 @@ public class TileMap extends Entity {
         int ix = (int) other.x / tileSize;
         int iy = (int) other.y / tileSize;
 
+        // make a list for the bounds
         ArrayList<Rectf> collidableBounds = new ArrayList<>();
         if (tileCanCollide(ix, iy))
             collidableBounds.add(getTileBounds(ix, iy));
         if (tileCanCollide(ix + 1, iy))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix + 1, iy));
         if (tileCanCollide(ix + 1, iy + 1))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix + 1, iy + 1));
         if (tileCanCollide(ix, iy + 1))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix, iy + 1));
 
+        // return as an array
         return collidableBounds.toArray(new Rectf[0]);
     }
 

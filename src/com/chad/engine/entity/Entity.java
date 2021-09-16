@@ -1,11 +1,10 @@
 package com.chad.engine.entity;
 
 import java.awt.*;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import com.chad.engine.gameState.GameState;
+import com.chad.engine.tile.TileMap;
 import com.chad.engine.utils.GameFile;
 
 import org.w3c.dom.Document;
@@ -111,32 +110,40 @@ public abstract class Entity {
 	 * @param value the value to be set (lowercase)
 	 */
 	public boolean setAttribute(String attr, String value) throws Exception {
-		switch(attr.toLowerCase()) {
-			case "id":
+		switch (attr.toLowerCase()) {
+			case "id" -> {
 				id = Integer.parseInt(value);
 				ID++;
 				return true;
-			case "x":
+			}
+			case "x" -> {
 				setX(Float.parseFloat(value));
 				return true;
-			case "y":
+			}
+			case "y" -> {
 				setY(Float.parseFloat(value));
 				return true;
-			case "z":
+			}
+			case "z" -> {
 				setzIndex(Integer.parseInt(value));
 				return true;
-			case "width":
+			}
+			case "width" -> {
 				setWidth(Float.parseFloat(value));
 				return true;
-			case "height":
+			}
+			case "height" -> {
 				setHeight(Float.parseFloat(value));
 				return true;
-			case "name":
+			}
+			case "name" -> {
 				setName(value);
 				return true;
-			case "visible":
+			}
+			case "visible" -> {
 				setVisible(Boolean.parseBoolean(value));
 				return true;
+			}
 		}
 		return false;
 	}
@@ -175,7 +182,8 @@ public abstract class Entity {
 
 			for (int i = 0; i < map.getLength(); i++)
 				try {
-					entity.setAttribute(map.item(i).getNodeName().toLowerCase(), map.item(i).getNodeValue().toLowerCase());
+					entity.setAttribute(map.item(i).getNodeName().toLowerCase(),
+										map.item(i).getNodeValue().toLowerCase());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -295,6 +303,14 @@ public abstract class Entity {
 		setBounds(x - this.x, y - this.y, width, height);
 	}
 
+	public void checkCollisions(Entity other) {
+		// TODO
+	}
+
+	public void checkTileMapCollisions(TileMap tileMap) {
+		// TODO
+	}
+
 	public final float getX() { return getRelativeX() + (parent == null ? 0 : parent.getX()); }
 	public final float getY() { return getRelativeY() + (parent == null ? 0 : parent.getY()); }
 
@@ -332,7 +348,7 @@ public abstract class Entity {
 	public Drawable getDrawable() { return drawable; }
 
 	public int getId() { return id; }
-	public void generateNewId() { this.id = ID; ID++; }
+	public void generateNewId() { this.id = ID; ID--; }
 
 	public String getName() { return name; }
 	public void setName(String name) {

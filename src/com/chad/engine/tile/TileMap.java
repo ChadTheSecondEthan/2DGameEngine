@@ -97,11 +97,6 @@ public class TileMap extends Entity {
                         x * tileSize + oy, tileSize, tileSize);
     }
 
-    public boolean checkTileCollisions(Entity other) {
-        // TODO
-        return false;
-    }
-
     @Override
     public boolean setAttribute(String attr, String value) throws Exception {
         switch (attr) {

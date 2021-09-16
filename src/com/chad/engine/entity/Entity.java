@@ -307,7 +307,7 @@ public abstract class Entity {
 	}
 
 	public void checkTileMapCollisions(TileMap tileMap) {
-		for (Rectf tmBound : tileMap.getTileBoundsAround(getBounds()))
+		for (Rectf tmBound : tileMap.getCollidableTilesAround(getBounds()))
 			checkCollisions(tmBound);
 	}
 

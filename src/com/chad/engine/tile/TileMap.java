@@ -15,6 +15,9 @@ public class TileMap extends Entity {
     private Spritesheet spritesheet;
     private short[][] tiles;
 
+    // the types of tiles with which the player will collide
+    private short[] collisionTypes;
+
     // width and height in numbers of tiles
     private int tx;
     private int ty;
@@ -22,30 +25,19 @@ public class TileMap extends Entity {
     // tile size
     private int tileSize;
 
-    public TileMap() { this(0, 0, 0); }
-
-    public TileMap(int tx, int ty, int tileSize) {
-        super();
-
-        this.tx = tx;
-        this.ty = ty;
-        this.tileSize = tileSize;
+    public TileMap() {
+        tiles = new short[0][0];
+        collisionTypes = new short[0];
     }
 
-    private void getTiles(String filePath) {
+    private void setTiles(String filePath) {
         // get lines
         ArrayList<String> lines = new GameFile(filePath).readLines();
-
-        // there should be 3 lines plus the height
-        assert lines.size() == height + 3;
 
         // first 3 lines are x tiles, y tiles, and tile size
         tx = Integer.parseInt(lines.get(0));
         ty = Integer.parseInt(lines.get(1));
         tileSize = Integer.parseInt(lines.get(2));
-
-        // tx and ty should be positive
-        assert tx > 0 && ty > 0;
 
         // create tiles array
         tiles = new short[tx][ty];
@@ -103,18 +95,32 @@ public class TileMap extends Entity {
     @Override
     public boolean setAttribute(String attr, String value) throws Exception {
         if ("src".equals(attr)) {
-            getTiles(value);
+            setTiles(value);
             return true;
         }
         return super.setAttribute(attr, value);
     }
 
+    public boolean tileCanCollide(int x, int y) {
+        short tile = tiles[x][y];
+        for (short type : collisionTypes)
+            if (tile == type)
+                return true;
+        return false;
+    }
+    public boolean tileCanCollide(int index) {
+        return tileCanCollide(index / tx, index % ty);
+    }
+
+    public void setCollisionTypes(short[] types) { collisionTypes = types; }
     public void setSpritesheet(Spritesheet s) { spritesheet = s; }
     public void setTile(int x, int y, int tile) { tiles[x][y] = (short) tile; }
-    public void setTile(int index, int tile) { tiles[index / tx][index / ty] = (short) tile; }
+    public void setTile(int index, int tile) { tiles[index / tx][index % ty] = (short) tile; }
+
+    public void setTiles(short[][] tiles) { this.tiles = tiles; }
+    public void setTileSize(int tileSize) { this.tileSize = tileSize; }
 
     public Rectf[] getTileBoundsAround(Rectf other) {
-
         // get the top left tile index
         int ix = (int) other.x / tileSize;
         int iy = (int) other.y / tileSize;
@@ -127,6 +133,24 @@ public class TileMap extends Entity {
         };
     }
 
+    public Rectf[] getCollidableTilesAround(Rectf other) {
+        // get the top left tile index
+        int ix = (int) other.x / tileSize;
+        int iy = (int) other.y / tileSize;
+
+        ArrayList<Rectf> collidableBounds = new ArrayList<>();
+        if (tileCanCollide(ix, iy))
+            collidableBounds.add(getTileBounds(ix, iy));
+        if (tileCanCollide(ix + 1, iy))
+            collidableBounds.add(getTileBounds(ix, iy));
+        if (tileCanCollide(ix + 1, iy + 1))
+            collidableBounds.add(getTileBounds(ix, iy));
+        if (tileCanCollide(ix, iy + 1))
+            collidableBounds.add(getTileBounds(ix, iy));
+
+        return collidableBounds.toArray(new Rectf[0]);
+    }
+
     public Rectf getTileBounds(int index) {
         // tile map bounds
         float x = getX();
@@ -134,7 +158,7 @@ public class TileMap extends Entity {
 
         // tile index
         int ix = index / tx;
-        int iy = index / ty;
+        int iy = index % ty;
 
         // combine to get bounds
         return new Rectf(x + ix * tileSize, y + iy * tileSize, tileSize, tileSize);

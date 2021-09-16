@@ -4,9 +4,11 @@ import com.chad.engine.entity.Entity;
 import com.chad.engine.gfx.Renderer;
 import com.chad.engine.gfx.Spritesheet;
 import com.chad.engine.utils.GameFile;
+import com.chad.engine.utils.Rectf;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class TileMap extends Entity {
 
     // sprite sheet and tile types
@@ -42,13 +44,13 @@ public class TileMap extends Entity {
         ty = Integer.parseInt(lines.get(1));
         tileSize = Integer.parseInt(lines.get(2));
 
-        // twidth and theight should be positive
+        // tx and ty should be positive
         assert tx > 0 && ty > 0;
 
         // create tiles array
         tiles = new short[tx][ty];
 
-        // read tiles from each lines where numbers are separated by spaces
+        // read tiles from each line where numbers are separated by spaces
         for (int i = 0; i < ty; i++) {
 
             // get the line, create a new array for the tiles
@@ -111,4 +113,34 @@ public class TileMap extends Entity {
     public void setTile(int x, int y, int tile) { tiles[x][y] = (short) tile; }
     public void setTile(int index, int tile) { tiles[index / tx][index / ty] = (short) tile; }
 
+    public Rectf[] getTileBoundsAround(Rectf other) {
+
+        // get the top left tile index
+        int ix = (int) other.x / tileSize;
+        int iy = (int) other.y / tileSize;
+
+        return new Rectf[] {
+                getTileBounds(ix, iy), // top left
+                getTileBounds(ix + 1, iy), // top right
+                getTileBounds(ix + 1, iy + 1), // bottom right
+                getTileBounds(ix, iy) // bottom left
+        };
+    }
+
+    public Rectf getTileBounds(int index) {
+        // tile map bounds
+        float x = getX();
+        float y = getY();
+
+        // tile index
+        int ix = index / tx;
+        int iy = index / ty;
+
+        // combine to get bounds
+        return new Rectf(x + ix * tileSize, y + iy * tileSize, tileSize, tileSize);
+    }
+
+    public Rectf getTileBounds(int x, int y) {
+        return new Rectf(getX() + x * tileSize, getY() + y * tileSize, tileSize, tileSize);
+    }
 }

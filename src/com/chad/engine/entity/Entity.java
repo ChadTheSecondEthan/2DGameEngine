@@ -7,6 +7,7 @@ import com.chad.engine.gameState.GameState;
 import com.chad.engine.tile.TileMap;
 import com.chad.engine.utils.GameFile;
 
+import com.chad.engine.utils.Rectf;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -88,11 +89,6 @@ public abstract class Entity {
 	
 	/** draws the entity onto the graphics */
 	public void draw() { drawable.draw(this); }
-
-	/** returns the bounds of the element */
-	public final Rectangle getBounds() {
-		return new Rectangle((int)getX(), (int)getY(), (int)width, (int)height);
-	}
 
 	/** adds a listener to the entity */
 	public Listener addListener(Listener listener) { listeners.add(listener); return listener; }
@@ -303,12 +299,16 @@ public abstract class Entity {
 		setBounds(x - this.x, y - this.y, width, height);
 	}
 
-	public void checkCollisions(Entity other) {
+	/** @return the x, y, width, and height values of this entity */
+	public Rectf getBounds() { return new Rectf(getX(), getY(), width, height); }
+
+	public void checkCollisions(Rectf bounds) {
 		// TODO
 	}
 
 	public void checkTileMapCollisions(TileMap tileMap) {
-		// TODO
+		for (Rectf tmBound : tileMap.getTileBoundsAround(getBounds()))
+			checkCollisions(tmBound);
 	}
 
 	public final float getX() { return getRelativeX() + (parent == null ? 0 : parent.getX()); }

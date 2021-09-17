@@ -6,6 +6,7 @@ import com.chad.engine.gfx.Spritesheet;
 import com.chad.engine.utils.GameFile;
 import com.chad.engine.utils.Rectf;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 @SuppressWarnings("unused")
@@ -109,13 +110,15 @@ public class TileMap extends Entity {
         return false;
     }
     public boolean tileCanCollide(int index) {
-        return tileCanCollide(index / tx, index % ty);
+        return tileCanCollide(index / tx, index % tx);
     }
 
     public void setCollisionTypes(short[] types) { collisionTypes = types; }
     public void setSpritesheet(Spritesheet s) { spritesheet = s; }
     public void setTile(int x, int y, int tile) { tiles[x][y] = (short) tile; }
-    public void setTile(int index, int tile) { tiles[index / tx][index % ty] = (short) tile; }
+    public void setTile(int index, int tile) {
+        tiles[index / tx][index % tx] = (short) tile;
+    }
 
     public void setTiles(short[][] tiles) { this.tiles = tiles; }
     public void setTileSize(int tileSize) { this.tileSize = tileSize; }
@@ -138,30 +141,23 @@ public class TileMap extends Entity {
         int ix = (int) other.x / tileSize;
         int iy = (int) other.y / tileSize;
 
+        // make a list for the bounds
         ArrayList<Rectf> collidableBounds = new ArrayList<>();
         if (tileCanCollide(ix, iy))
             collidableBounds.add(getTileBounds(ix, iy));
         if (tileCanCollide(ix + 1, iy))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix + 1, iy));
         if (tileCanCollide(ix + 1, iy + 1))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix + 1, iy + 1));
         if (tileCanCollide(ix, iy + 1))
-            collidableBounds.add(getTileBounds(ix, iy));
+            collidableBounds.add(getTileBounds(ix, iy + 1));
 
+        // return as an array
         return collidableBounds.toArray(new Rectf[0]);
     }
 
     public Rectf getTileBounds(int index) {
-        // tile map bounds
-        float x = getX();
-        float y = getY();
-
-        // tile index
-        int ix = index / tx;
-        int iy = index % ty;
-
-        // combine to get bounds
-        return new Rectf(x + ix * tileSize, y + iy * tileSize, tileSize, tileSize);
+        return new Rectf(getX() + (index / tx) * tileSize, getY() + (index % tx) * tileSize, tileSize, tileSize);
     }
 
     public Rectf getTileBounds(int x, int y) {

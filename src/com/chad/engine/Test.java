@@ -33,6 +33,9 @@ public class Test {
 			// add spritesheet to tile map
 			TileMap tm = findEntityById(1);
 			tm.setSpritesheet(new Spritesheet("exampleTilemap.png", 512 / 8));
+
+			for (int i = 0; i < 10; i++)
+				tm.setTile(i * 4, 10);
 		}
 	}
 

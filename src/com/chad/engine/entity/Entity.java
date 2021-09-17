@@ -1,6 +1,5 @@
 package com.chad.engine.entity;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import com.chad.engine.gameState.GameState;
@@ -302,8 +301,51 @@ public abstract class Entity {
 	/** @return the x, y, width, and height values of this entity */
 	public Rectf getBounds() { return new Rectf(getX(), getY(), width, height); }
 
-	public void checkCollisions(Rectf bounds) {
-		// TODO
+	public void checkCollisions(Rectf other) {
+		// get x and y
+		float x = getX();
+		float y = getY();
+
+		// variables for the right and bottom bounds for this entity
+		float right = x + width;
+		float bottom = y + height;
+
+		// right and bottom for the other entity
+		float oright = other.x + other.w;
+		float obottom = other.y + other.h;
+
+		// make sure the bounds are intersecting
+		if (!(right > other.x && x < oright && bottom > other.y && y < obottom))
+			return;
+
+		float colleft = right - other.x;
+		float colright = oright - x;
+
+		float coltop = obottom - y;
+		float colbottom = bottom - other.y;
+
+		float colx = Math.min(colleft, colright);
+		float coly = Math.min(coltop, colbottom);
+
+		if (colx > coly) {
+			// correct y collisions
+			if (coltop < colbottom) {
+				// correct top collision
+				setY(obottom);
+			} else {
+				// correct bottom collision
+				setY(other.y - height);
+			}
+		} else {
+			// correct x collisions
+			if (colright < colleft) {
+				// correct right collision
+				setX(oright);
+			} else {
+				// correct left collision
+				setX(other.x - width);
+			}
+		}
 	}
 
 	public void checkTileMapCollisions(TileMap tileMap) {

@@ -103,7 +103,7 @@ public class TileMap extends Entity {
     }
 
     public boolean tileCanCollide(int x, int y) {
-        short tile = tiles[x][y];
+        short tile = tiles[y][x];
         for (short type : collisionTypes)
             if (tile == type)
                 return true;
@@ -115,7 +115,7 @@ public class TileMap extends Entity {
 
     public void setCollisionTypes(short[] types) { collisionTypes = types; }
     public void setSpritesheet(Spritesheet s) { spritesheet = s; }
-    public void setTile(int x, int y, int tile) { tiles[x][y] = (short) tile; }
+    public void setTile(int x, int y, int tile) { tiles[y][x] = (short) tile; }
     public void setTile(int index, int tile) {
         tiles[index / tx][index % tx] = (short) tile;
     }

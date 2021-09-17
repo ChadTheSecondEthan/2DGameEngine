@@ -11,11 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/entity/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/tile/TileMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/tile/TileMap.class" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/entity/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/tile/TileMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/tile/TileMap.class" afterDir="false" />
@@ -23,7 +18,6 @@
       <change beforePath="$PROJECT_DIR$/res/tilemap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/tilemap.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/tile/TileMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/tile/TileMap.java" afterDir="false" />
->>>>>>> fa2f42dcbcf4c5f9b349a0faa98ec98642b1192d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

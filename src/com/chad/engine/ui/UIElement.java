@@ -7,6 +7,7 @@ import com.chad.engine.Window;
 
 import java.awt.Point;
 
+@SuppressWarnings("unused")
 public class UIElement extends Entity {
 
 	public static final byte ON_MOUSE_ENTER = 20;
@@ -15,6 +16,9 @@ public class UIElement extends Entity {
 
 	// visibility and whether the mouse has entered
 	private boolean mouseEntered;
+
+	// anchor for the element
+	private Anchor a;
 
 	// anchor point for the element
 	private final Point anchor;
@@ -29,12 +33,10 @@ public class UIElement extends Entity {
 
 	public void centerX() {
 		anchor.x = Window.width / 2;
-//	    setX((Game.instance().getWindowSize().width - width) * 0.5f);
     }
 
     public void centerY() {
 		anchor.y = Window.height / 2;
-//        setY((Game.instance().getWindowSize().height - height) * 0.5f);
     }
 
 	public void setAnchor(float x, float y) { anchor.x = (int)x; anchor.y = (int)y; }
@@ -97,18 +99,22 @@ public class UIElement extends Entity {
 				return true;
 			case "align":
 				switch (value) {
-					case "left":
+					case "left" -> {
 						anchor.x = 0;
 						return true;
-					case "right":
+					}
+					case "right" -> {
 						anchor.x = Window.width;
 						return true;
-					case "top":
+					}
+					case "top" -> {
 						anchor.y = 0;
 						return true;
-					case "bottom":
+					}
+					case "bottom" -> {
 						anchor.y = Window.height;
 						return true;
+					}
 				}
 				break;
 		}

@@ -29,11 +29,11 @@ public class Mathf {
 		return new Color(red, green, blue);
 	}
 	
-	public static boolean pointWithinRect(Point p, Rectangle rect) {
+	public static boolean pointWithinRect(Point p, Rectf rect) {
 		return p.x >= rect.x && 
 				p.y >= rect.y && 
-				p.x <= rect.x + rect.width && 
-				p.y <= rect.y + rect.height;
+				p.x <= rect.x + rect.w &&
+				p.y <= rect.y + rect.h;
 	}
 
 }

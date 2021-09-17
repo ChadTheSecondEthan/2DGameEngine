@@ -6,6 +6,11 @@ import java.awt.image.BufferedImage;
 public class Renderer {
 
     private static Graphics graphics;
+    private static Camera camera;
+
+    static {
+        camera = new Camera();
+    }
 
     public static void fill(int x, int y, int w, int h) { graphics.fillRect(x, y, w, h); }
     public static void fill(float x, float y, float w, float h) { graphics.fillRect((int)x, (int)y, (int)w, (int)h); }
@@ -22,6 +27,7 @@ public class Renderer {
     public static void setFont(Font font) { graphics.setFont(font); }
     public static void setColor(java.awt.Color color) { graphics.setColor(color); }
     public static void setGraphics(Graphics graphics) { Renderer.graphics = graphics; }
+    public static void setCamera(Camera camera) { Renderer.camera = camera; }
 
     public static Font getFont() { return graphics.getFont(); }
     public static FontMetrics getFontMetrics() { return graphics.getFontMetrics(); }

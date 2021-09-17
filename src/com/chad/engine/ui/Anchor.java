@@ -1,12 +1,16 @@
 package com.chad.engine.ui;
 
-import java.awt.*;
+import com.chad.engine.Window;
 
+import java.awt.Point;
+import java.awt.Dimension;
+
+@SuppressWarnings("unused")
 public class Anchor {
 
-	private Dimension startSize;
-	private Point point;
-	private boolean stretch;
+	private final Dimension startSize;
+	private final Point point;
+	private final boolean stretch;
 
 	public Anchor(Dimension startSize, Point point, boolean stretch) {
 		this.startSize = startSize;
@@ -18,10 +22,10 @@ public class Anchor {
 		return new Anchor(startSize, new Point(), false);
 	}
 
-	public Point getPoint(Dimension currentSize) {
+	public Point getPoint() {
 		return stretch ? new Point(
-			currentSize.width * point.x / startSize.width,
-			currentSize.height * point.y / startSize.height
+				(int) Window.getWidth() * point.x / startSize.width,
+				(int) Window.getHeight() * point.y / startSize.height
 		) : point;
 	}
 

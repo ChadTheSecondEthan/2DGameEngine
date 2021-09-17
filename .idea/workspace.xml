@@ -10,22 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/ui/ColorRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorRenderer.java" beforeDir="false" />
-=======
       <change afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/gfx/Renderer.java" afterDir="false" />
->>>>>>> a0eb74631738a26c72342a917a5a68804e4d9ec3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

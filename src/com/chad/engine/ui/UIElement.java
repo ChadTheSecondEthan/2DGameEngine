@@ -1,6 +1,7 @@
 package com.chad.engine.ui;
 
 import com.chad.engine.entity.*;
+import com.chad.engine.gfx.Renderer;
 import com.chad.engine.utils.Mathf;
 import com.chad.engine.utils.Mouse;
 import com.chad.engine.Window;
@@ -72,6 +73,13 @@ public class UIElement extends Entity {
 		// check if the on click listener should be used
 		if (mouseEntered && Mouse.clicked())
 			invokeListeners(ON_MOUSE_CLICK);
+	}
+
+	@Override
+	public void draw() {
+		Renderer.disableCamera();
+		super.draw();
+		Renderer.enabledCamera();
 	}
 
 	/** sets the visibility of the element */

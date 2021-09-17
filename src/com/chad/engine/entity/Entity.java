@@ -3,6 +3,7 @@ package com.chad.engine.entity;
 import java.util.ArrayList;
 
 import com.chad.engine.gameState.GameState;
+import com.chad.engine.gfx.Camera;
 import com.chad.engine.tile.TileMap;
 import com.chad.engine.utils.GameFile;
 
@@ -353,8 +354,8 @@ public abstract class Entity {
 			checkCollisions(tmBound);
 	}
 
-	public final float getX() { return getRelativeX() + (parent == null ? 0 : parent.getX()); }
-	public final float getY() { return getRelativeY() + (parent == null ? 0 : parent.getY()); }
+	public final float getX() { return getRelativeX() + (parent == null ? 0f : parent.getX()); }
+	public final float getY() { return getRelativeY() + (parent == null ? 0f : parent.getY()); }
 
 	public float getRelativeX() { return x; }
 	public float getRelativeY() { return y; }

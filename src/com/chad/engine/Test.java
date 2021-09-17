@@ -1,17 +1,12 @@
 package com.chad.engine;
 
-import com.chad.engine.entity.tween.Tween;
 import com.chad.engine.gameState.GameState;
 import com.chad.engine.gfx.Renderer;
 import com.chad.engine.gfx.Spritesheet;
 import com.chad.engine.tile.TileMap;
-import com.chad.engine.entity.ColorRenderer;
-import com.chad.engine.utils.Functions;
 import com.chad.engine.utils.Rectf;
-import com.chad.engine.utils.Stats;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Test {
 
@@ -42,6 +37,13 @@ public class Test {
 			for (int i = 0; i < 100; i++)
 				tileMap.setTile(i, 10);
 			tileMap.setTile(0, 1, 11);
+		}
+
+		@Override
+		public void update(float dt) {
+			super.update(dt);
+
+			Renderer.camera.x++;
 		}
 
 		@Override

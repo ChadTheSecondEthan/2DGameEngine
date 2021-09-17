@@ -1,13 +1,3 @@
 <GameState>
     <tile.TileMap src="tilemap.txt" center-x="true" center-y="true" id="1" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
-    <ui.ColorRenderer id="0" visible="false" />
 </GameState>

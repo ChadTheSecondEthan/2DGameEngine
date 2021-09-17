@@ -10,68 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d3e1075-9ca2-47ed-9a57-72b473a0e3ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/2DGameEngine_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Action.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Animation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/ColorRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Drawable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Entity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Listener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Mask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/SpriteRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Tween/Bounce.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Tween/Move.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Tween/Oscillate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Entity/Tween/Tween.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/GameLoop.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Global.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Anchor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Animation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Button.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ColorChanger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Image.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ImageHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ProgressBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/ScrollView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text$TextAlign.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/Text.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/UI/UIElement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Control.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Functions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/GameFile$Reader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/GameFile$Replacer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/GameFile$Writer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/GameFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Keyboard$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Keyboard$Key.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Keyboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Mathf.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Mouse$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Mouse$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Mouse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Pair.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/ReadableObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Resources.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Stats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/StatsMap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Utils/Time.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gameState/GameState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Color.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Light.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Renderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/gfx/Spritesheet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/sound/Sound.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/tile/TileMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/2DGameEngine_jar/2DGameEngine.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Test$ExampleState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/com/chad/engine/ui/ColorRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2DGameEngine/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/chad/engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/chad/engine/ui/ColorRenderer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
